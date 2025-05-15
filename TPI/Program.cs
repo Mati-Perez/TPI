@@ -10,6 +10,9 @@ namespace TPI
         {
             Console.WriteLine("Sistema de gestión de actividades cargado.");
 
+            var dbService = new BaseDatosService();
+            dbService.CrearBaseYTablas(); // <-- crea base y tablas
+
             var cuotaService = new CuotaService();
 
             var cuota = new Cuota(
