@@ -108,7 +108,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.ShowToolTips = true;
-            tabControl1.Size = new Size(1148, 641);
+            tabControl1.Size = new Size(1148, 531);
             tabControl1.TabIndex = 0;
             // 
             // REGISTRO
@@ -125,7 +125,7 @@
             REGISTRO.Location = new Point(4, 29);
             REGISTRO.Name = "REGISTRO";
             REGISTRO.Padding = new Padding(3);
-            REGISTRO.Size = new Size(1140, 608);
+            REGISTRO.Size = new Size(1140, 498);
             REGISTRO.TabIndex = 0;
             REGISTRO.Text = "REGISTRO";
             // 
@@ -199,7 +199,7 @@
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(textBox1);
             groupBox3.Controls.Add(label9);
-            groupBox3.Location = new Point(45, 238);
+            groupBox3.Location = new Point(45, 221);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(858, 103);
             groupBox3.TabIndex = 30;
@@ -288,9 +288,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(915, 442);
+            button2.Location = new Point(915, 424);
             button2.Name = "button2";
-            button2.Size = new Size(186, 48);
+            button2.Size = new Size(202, 48);
             button2.TabIndex = 26;
             button2.Text = "REGISTRAR";
             button2.UseVisualStyleBackColor = true;
@@ -298,9 +298,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(915, 374);
+            button1.Location = new Point(915, 356);
             button1.Name = "button1";
-            button1.Size = new Size(186, 48);
+            button1.Size = new Size(202, 48);
             button1.TabIndex = 25;
             button1.Text = "CANCELAR";
             button1.UseVisualStyleBackColor = true;
@@ -315,7 +315,7 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(txtCp);
-            groupBox2.Location = new Point(45, 347);
+            groupBox2.Location = new Point(45, 330);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(858, 143);
             groupBox2.TabIndex = 20;
@@ -609,10 +609,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1148, 641);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1148, 531);
             Controls.Add(tabControl1);
             Name = "RegistroForm";
-            Text = "RegistroForm";
+            Text = "Registro";
             tabControl1.ResumeLayout(false);
             REGISTRO.ResumeLayout(false);
             groupBox7.ResumeLayout(false);

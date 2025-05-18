@@ -51,8 +51,8 @@ namespace TPI.Forms
             Show_date();
             Show_Time();
             comboTipo.Text = "SOCIO"; // Set default value
-            listRegistro.GridLines = true;
-            listRegistro.FullRowSelect = true;
+            listRegistro.GridLines = true; //-> permite dibujar la grilla , las celdas 
+            listRegistro.FullRowSelect = true; // -> permite selecionar la fila completa
             llenarCombo(comboTipo, comboDia, comboMes, comboYear);
         }
 
