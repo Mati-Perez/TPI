@@ -37,20 +37,24 @@
             groupBox5 = new GroupBox();
             lblFecha = new Label();
             groupBox3 = new GroupBox();
-            textBox2 = new TextBox();
+            txtTelEmerg = new TextBox();
             label14 = new Label();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
+            txtPreEmerg = new TextBox();
+            txtTel = new TextBox();
             label13 = new Label();
-            textBox3 = new TextBox();
+            txtEmail = new TextBox();
             label12 = new Label();
             label10 = new Label();
-            textBox1 = new TextBox();
+            txtPreTel = new TextBox();
             label9 = new Label();
             button2 = new Button();
             button1 = new Button();
             groupBox2 = new GroupBox();
-            textBox6 = new TextBox();
+            label8 = new Label();
+            txtLetra = new TextBox();
+            txtPiso = new TextBox();
+            label7 = new Label();
+            txtAltura = new TextBox();
             label15 = new Label();
             txtLocalidad = new TextBox();
             txtCalle = new TextBox();
@@ -60,11 +64,12 @@
             txtCp = new TextBox();
             groupBox1 = new GroupBox();
             groupBox4 = new GroupBox();
+            groupBox8 = new GroupBox();
+            radioF = new RadioButton();
+            radioM = new RadioButton();
             comboMes = new ComboBox();
             comboYear = new ComboBox();
             comboDia = new ComboBox();
-            radioF = new RadioButton();
-            radioM = new RadioButton();
             txtDni = new TextBox();
             label5 = new Label();
             txtApellido = new TextBox();
@@ -79,8 +84,14 @@
             TIPO = new ColumnHeader();
             SEXO = new ColumnHeader();
             DNI = new ColumnHeader();
+            EMAIL = new ColumnHeader();
             FECHANACIMIENTO = new ColumnHeader();
+            TELEFONO = new ColumnHeader();
+            TELEMERGENCIAS = new ColumnHeader();
             CALLE = new ColumnHeader();
+            CALLEALTURA = new ColumnHeader();
+            CALLEPISO = new ColumnHeader();
+            DEPARTAMENTO = new ColumnHeader();
             LOCALIDAD = new ColumnHeader();
             CP = new ColumnHeader();
             FECHAREGISTRO = new ColumnHeader();
@@ -95,6 +106,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox8.SuspendLayout();
             tabPage2.SuspendLayout();
             SuspendLayout();
             // 
@@ -108,7 +120,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.ShowToolTips = true;
-            tabControl1.Size = new Size(1148, 531);
+            tabControl1.Size = new Size(1148, 601);
             tabControl1.TabIndex = 0;
             // 
             // REGISTRO
@@ -125,7 +137,7 @@
             REGISTRO.Location = new Point(4, 29);
             REGISTRO.Name = "REGISTRO";
             REGISTRO.Padding = new Padding(3);
-            REGISTRO.Size = new Size(1140, 498);
+            REGISTRO.Size = new Size(1140, 568);
             REGISTRO.TabIndex = 0;
             REGISTRO.Text = "REGISTRO";
             // 
@@ -189,15 +201,15 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(textBox2);
+            groupBox3.Controls.Add(txtTelEmerg);
             groupBox3.Controls.Add(label14);
-            groupBox3.Controls.Add(textBox5);
-            groupBox3.Controls.Add(textBox4);
+            groupBox3.Controls.Add(txtPreEmerg);
+            groupBox3.Controls.Add(txtTel);
             groupBox3.Controls.Add(label13);
-            groupBox3.Controls.Add(textBox3);
+            groupBox3.Controls.Add(txtEmail);
             groupBox3.Controls.Add(label12);
             groupBox3.Controls.Add(label10);
-            groupBox3.Controls.Add(textBox1);
+            groupBox3.Controls.Add(txtPreTel);
             groupBox3.Controls.Add(label9);
             groupBox3.Location = new Point(45, 221);
             groupBox3.Name = "groupBox3";
@@ -206,12 +218,12 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "CONTACTO";
             // 
-            // textBox2
+            // txtTelEmerg
             // 
-            textBox2.Location = new Point(349, 58);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(149, 27);
-            textBox2.TabIndex = 22;
+            txtTelEmerg.Location = new Point(349, 58);
+            txtTelEmerg.Name = "txtTelEmerg";
+            txtTelEmerg.Size = new Size(149, 27);
+            txtTelEmerg.TabIndex = 22;
             // 
             // label14
             // 
@@ -222,19 +234,19 @@
             label14.TabIndex = 21;
             label14.Text = "-";
             // 
-            // textBox5
+            // txtPreEmerg
             // 
-            textBox5.Location = new Point(270, 58);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(53, 27);
-            textBox5.TabIndex = 20;
+            txtPreEmerg.Location = new Point(270, 58);
+            txtPreEmerg.Name = "txtPreEmerg";
+            txtPreEmerg.Size = new Size(53, 27);
+            txtPreEmerg.TabIndex = 20;
             // 
-            // textBox4
+            // txtTel
             // 
-            textBox4.Location = new Point(85, 58);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(149, 27);
-            textBox4.TabIndex = 19;
+            txtTel.Location = new Point(85, 58);
+            txtTel.Name = "txtTel";
+            txtTel.Size = new Size(149, 27);
+            txtTel.TabIndex = 19;
             // 
             // label13
             // 
@@ -245,12 +257,12 @@
             label13.TabIndex = 18;
             label13.Text = "-";
             // 
-            // textBox3
+            // txtEmail
             // 
-            textBox3.Location = new Point(538, 58);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(244, 27);
-            textBox3.TabIndex = 17;
+            txtEmail.Location = new Point(538, 58);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(244, 27);
+            txtEmail.TabIndex = 17;
             // 
             // label12
             // 
@@ -270,12 +282,12 @@
             label10.TabIndex = 14;
             label10.Text = "TEL. EMERGENCIA";
             // 
-            // textBox1
+            // txtPreTel
             // 
-            textBox1.Location = new Point(6, 58);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(53, 27);
-            textBox1.TabIndex = 13;
+            txtPreTel.Location = new Point(6, 58);
+            txtPreTel.Name = "txtPreTel";
+            txtPreTel.Size = new Size(53, 27);
+            txtPreTel.TabIndex = 13;
             // 
             // label9
             // 
@@ -288,7 +300,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(915, 424);
+            button2.Location = new Point(915, 461);
             button2.Name = "button2";
             button2.Size = new Size(202, 48);
             button2.TabIndex = 26;
@@ -298,7 +310,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(915, 356);
+            button1.Location = new Point(915, 393);
             button1.Name = "button1";
             button1.Size = new Size(202, 48);
             button1.TabIndex = 25;
@@ -307,7 +319,11 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox6);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(txtLetra);
+            groupBox2.Controls.Add(txtPiso);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(txtAltura);
             groupBox2.Controls.Add(label15);
             groupBox2.Controls.Add(txtLocalidad);
             groupBox2.Controls.Add(txtCalle);
@@ -317,17 +333,49 @@
             groupBox2.Controls.Add(txtCp);
             groupBox2.Location = new Point(45, 330);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(858, 143);
+            groupBox2.Size = new Size(858, 181);
             groupBox2.TabIndex = 20;
             groupBox2.TabStop = false;
             groupBox2.Text = "DIRRECCION";
             // 
-            // textBox6
+            // label8
             // 
-            textBox6.Location = new Point(261, 63);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(77, 27);
-            textBox6.TabIndex = 13;
+            label8.AutoSize = true;
+            label8.Location = new Point(131, 108);
+            label8.Name = "label8";
+            label8.Size = new Size(82, 20);
+            label8.TabIndex = 17;
+            label8.Text = "LETRA / N°";
+            // 
+            // txtLetra
+            // 
+            txtLetra.Location = new Point(131, 131);
+            txtLetra.Name = "txtLetra";
+            txtLetra.Size = new Size(116, 27);
+            txtLetra.TabIndex = 16;
+            // 
+            // txtPiso
+            // 
+            txtPiso.Location = new Point(6, 131);
+            txtPiso.Name = "txtPiso";
+            txtPiso.Size = new Size(106, 27);
+            txtPiso.TabIndex = 15;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(6, 108);
+            label7.Name = "label7";
+            label7.Size = new Size(40, 20);
+            label7.TabIndex = 14;
+            label7.Text = "PISO";
+            // 
+            // txtAltura
+            // 
+            txtAltura.Location = new Point(261, 63);
+            txtAltura.Name = "txtAltura";
+            txtAltura.Size = new Size(77, 27);
+            txtAltura.TabIndex = 13;
             // 
             // label15
             // 
@@ -389,8 +437,6 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(groupBox4);
-            groupBox1.Controls.Add(radioF);
-            groupBox1.Controls.Add(radioM);
             groupBox1.Controls.Add(txtDni);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtApellido);
@@ -406,6 +452,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(groupBox8);
             groupBox4.Controls.Add(comboMes);
             groupBox4.Controls.Add(comboYear);
             groupBox4.Controls.Add(comboDia);
@@ -415,6 +462,39 @@
             groupBox4.TabIndex = 16;
             groupBox4.TabStop = false;
             groupBox4.Text = "FECHA DE NACIMIENTO";
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(radioF);
+            groupBox8.Controls.Add(radioM);
+            groupBox8.Location = new Point(431, 0);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new Size(427, 88);
+            groupBox8.TabIndex = 16;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "SEXO";
+            // 
+            // radioF
+            // 
+            radioF.AutoSize = true;
+            radioF.Location = new Point(135, 38);
+            radioF.Name = "radioF";
+            radioF.Size = new Size(91, 24);
+            radioF.TabIndex = 11;
+            radioF.TabStop = true;
+            radioF.Text = "HOMBRE";
+            radioF.UseVisualStyleBackColor = true;
+            // 
+            // radioM
+            // 
+            radioM.AutoSize = true;
+            radioM.Location = new Point(36, 37);
+            radioM.Name = "radioM";
+            radioM.Size = new Size(75, 24);
+            radioM.TabIndex = 10;
+            radioM.TabStop = true;
+            radioM.Text = "MUJER";
+            radioM.UseVisualStyleBackColor = true;
             // 
             // comboMes
             // 
@@ -443,28 +523,6 @@
             comboDia.Size = new Size(61, 28);
             comboDia.TabIndex = 13;
             comboDia.Text = "DIA";
-            // 
-            // radioF
-            // 
-            radioF.AutoSize = true;
-            radioF.Location = new Point(801, 62);
-            radioF.Name = "radioF";
-            radioF.Size = new Size(37, 24);
-            radioF.TabIndex = 11;
-            radioF.TabStop = true;
-            radioF.Text = "F";
-            radioF.UseVisualStyleBackColor = true;
-            // 
-            // radioM
-            // 
-            radioM.AutoSize = true;
-            radioM.Location = new Point(752, 62);
-            radioM.Name = "radioM";
-            radioM.Size = new Size(43, 24);
-            radioM.TabIndex = 10;
-            radioM.TabStop = true;
-            radioM.Text = "M";
-            radioM.UseVisualStyleBackColor = true;
             // 
             // txtDni
             // 
@@ -520,25 +578,25 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1140, 608);
+            tabPage2.Size = new Size(1140, 568);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "LISTADO";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // listRegistro
             // 
-            listRegistro.Columns.AddRange(new ColumnHeader[] { ID, NOMBRE, APELLIDO, TIPO, SEXO, DNI, FECHANACIMIENTO, CALLE, LOCALIDAD, CP, FECHAREGISTRO, HORAREGISTRO });
+            listRegistro.Columns.AddRange(new ColumnHeader[] { ID, NOMBRE, APELLIDO, TIPO, SEXO, DNI, EMAIL, FECHANACIMIENTO, TELEFONO, TELEMERGENCIAS, CALLE, CALLEALTURA, CALLEPISO, DEPARTAMENTO, LOCALIDAD, CP, FECHAREGISTRO, HORAREGISTRO });
             listRegistro.Dock = DockStyle.Fill;
             listRegistro.Location = new Point(3, 3);
             listRegistro.Name = "listRegistro";
-            listRegistro.Size = new Size(1134, 602);
+            listRegistro.Size = new Size(1134, 562);
             listRegistro.TabIndex = 28;
             listRegistro.UseCompatibleStateImageBehavior = false;
             listRegistro.View = View.Details;
             // 
             // ID
             // 
-            ID.Text = "ID";
+            ID.Text = "N° SOCIO";
             ID.Width = 100;
             // 
             // NOMBRE
@@ -565,15 +623,44 @@
             DNI.Text = "DNI";
             DNI.Width = 150;
             // 
+            // EMAIL
+            // 
+            EMAIL.Text = "E-MAIL";
+            EMAIL.Width = 180;
+            // 
             // FECHANACIMIENTO
             // 
             FECHANACIMIENTO.Text = "FEC. NACIMIENTO";
             FECHANACIMIENTO.Width = 160;
             // 
+            // TELEFONO
+            // 
+            TELEFONO.Text = "TELEFONO";
+            TELEFONO.Width = 160;
+            // 
+            // TELEMERGENCIAS
+            // 
+            TELEMERGENCIAS.Text = "TEL. EMERGENCIAS";
+            TELEMERGENCIAS.Width = 160;
+            // 
             // CALLE
             // 
             CALLE.Text = "CALLE";
             CALLE.Width = 250;
+            // 
+            // CALLEALTURA
+            // 
+            CALLEALTURA.Text = "ALTURA N°";
+            CALLEALTURA.TextAlign = HorizontalAlignment.Right;
+            CALLEALTURA.Width = 90;
+            // 
+            // CALLEPISO
+            // 
+            CALLEPISO.Text = "PISO";
+            // 
+            // DEPARTAMENTO
+            // 
+            DEPARTAMENTO.Text = "DEPTO.";
             // 
             // LOCALIDAD
             // 
@@ -600,7 +687,7 @@
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1140, 608);
+            tabPage3.Size = new Size(1140, 568);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "PROFESORES";
             tabPage3.UseVisualStyleBackColor = true;
@@ -610,7 +697,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1148, 531);
+            ClientSize = new Size(1148, 601);
             Controls.Add(tabControl1);
             Name = "RegistroForm";
             Text = "Registro";
@@ -628,6 +715,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox4.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
             tabPage2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -635,21 +724,21 @@
         #endregion
         private TabPage REGISTRO;
         private GroupBox groupBox3;
-        private TextBox textBox2;
+        private TextBox txtTelEmerg;
         private Label label14;
-        private TextBox textBox5;
-        private TextBox textBox4;
+        private TextBox txtPreEmerg;
+        private TextBox txtTel;
         private Label label13;
-        private TextBox textBox3;
+        private TextBox txtEmail;
         private Label label12;
         private Label label10;
-        private TextBox textBox1;
+        private TextBox txtPreTel;
         private Label label9;
         private ComboBox comboTipo;
         private Button button2;
         private Button button1;
         private GroupBox groupBox2;
-        private TextBox textBox6;
+        private TextBox txtAltura;
         private Label label15;
         private TextBox txtLocalidad;
         private TextBox txtCalle;
@@ -691,5 +780,16 @@
         private ColumnHeader TIPO;
         private ColumnHeader FECHANACIMIENTO;
         private TabControl tabControl1;
+        private Label label7;
+        private Label label8;
+        private TextBox txtLetra;
+        private TextBox txtPiso;
+        private GroupBox groupBox8;
+        private ColumnHeader EMAIL;
+        private ColumnHeader TELEFONO;
+        private ColumnHeader TELEMERGENCIAS;
+        private ColumnHeader CALLEALTURA;
+        private ColumnHeader CALLEPISO;
+        private ColumnHeader DEPARTAMENTO;
     }
 }

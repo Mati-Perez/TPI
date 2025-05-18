@@ -77,17 +77,26 @@ namespace TPI.Forms
             Show_Time();
 
             string id = new Random().Next(100).ToString();
-            string sexo = radioM.Checked ? "M" : "F";
+            string sexo = radioM.Checked ? "MUJER" : "HOMBRE";
             String fechaNacimiento = comboDia.Text + "/" + comboMes.Text + "/" + comboYear.Text;
+
+            string telefono = txtPreTel + "-" + txtTel.Text;
+            string telefonoEmergencia = txtPreEmerg + "-" + txtTelEmerg.Text;
 
             ListViewItem fila = new ListViewItem(id);
             fila.SubItems.Add(txtNombre.Text);
             fila.SubItems.Add(txtApellido.Text);
             fila.SubItems.Add(comboTipo.Text);
-            fila.SubItems.Add(sexo);
+            fila.SubItems.Add(sexo == "MUJER" ? "F" : "M");
             fila.SubItems.Add(txtDni.Text);
+            fila.SubItems.Add(txtEmail.Text);
             fila.SubItems.Add(fechaNacimiento);
+            fila.SubItems.Add(telefono);
+            fila.SubItems.Add(telefonoEmergencia);
             fila.SubItems.Add(txtCalle.Text);
+            fila.SubItems.Add(txtAltura.Text);
+            fila.SubItems.Add(txtPiso.Text);
+            fila.SubItems.Add(txtLetra.Text);
             fila.SubItems.Add(txtLocalidad.Text);
             fila.SubItems.Add(txtCp.Text);
             fila.SubItems.Add(lblFecha.Text);
