@@ -34,7 +34,8 @@
             txtUsuario = new TextBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            lblMensaje = new Label();
+            lblPassword = new Label();
+            lblUsuario = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             btnIngresar.BackColor = Color.Indigo;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIngresar.ForeColor = SystemColors.ButtonFace;
-            btnIngresar.Location = new Point(322, 236);
+            btnIngresar.Location = new Point(323, 255);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(98, 43);
             btnIngresar.TabIndex = 0;
@@ -54,11 +55,11 @@
             // txtPass
             // 
             txtPass.ForeColor = Color.Silver;
-            txtPass.Location = new Point(294, 164);
+            txtPass.Location = new Point(294, 182);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(155, 23);
             txtPass.TabIndex = 1;
-            txtPass.Text = "CONTRASEÑA";
+            txtPass.Text = "PASSWORD";
             txtPass.Enter += txtPass_Enter;
             txtPass.Leave += txtPass_Leave;
             // 
@@ -96,14 +97,23 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // lblMensaje
+            // lblPassword
             // 
-            lblMensaje.AutoSize = true;
-            lblMensaje.BackColor = Color.Transparent;
-            lblMensaje.Location = new Point(294, 201);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(0, 15);
-            lblMensaje.TabIndex = 5;
+            lblPassword.AutoSize = true;
+            lblPassword.BackColor = Color.Transparent;
+            lblPassword.Location = new Point(294, 219);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(0, 15);
+            lblPassword.TabIndex = 5;
+            // 
+            // lblUsuario
+            // 
+            lblUsuario.AutoSize = true;
+            lblUsuario.BackColor = Color.Transparent;
+            lblUsuario.Location = new Point(294, 141);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(0, 15);
+            lblUsuario.TabIndex = 6;
             // 
             // Form1
             // 
@@ -112,7 +122,8 @@
             BackColor = Color.DarkSeaGreen;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(535, 348);
-            Controls.Add(lblMensaje);
+            Controls.Add(lblUsuario);
+            Controls.Add(lblPassword);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(txtUsuario);
@@ -132,6 +143,7 @@
         private TextBox txtUsuario;
         private Label label1;
         private PictureBox pictureBox1;
-        private Label lblMensaje;
+        private Label lblPassword;
+        private Label lblUsuario;
     }
 }

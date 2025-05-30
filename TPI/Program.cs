@@ -51,6 +51,11 @@ namespace TPI
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+<<<<<<< HEAD
+=======
+            Application.Run(new RegistroForm());
+            Application.Run(new CuotaForm());
+>>>>>>> master
         }
     }
 }
