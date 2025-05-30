@@ -80,8 +80,8 @@ namespace TPI.Forms
             string sexo = radioM.Checked ? "MUJER" : "HOMBRE";
             String fechaNacimiento = comboDia.Text + "/" + comboMes.Text + "/" + comboYear.Text;
 
-            string telefono = txtPreTel + "-" + txtTel.Text;
-            string telefonoEmergencia = txtPreEmerg + "-" + txtTelEmerg.Text;
+            string telefono = txtPreTel.Text + "-" + txtTel.Text;
+            string telefonoEmergencia = txtPreEmerg.Text + "-" + txtTelEmerg.Text;
 
             ListViewItem fila = new ListViewItem(id);
             fila.SubItems.Add(txtNombre.Text);

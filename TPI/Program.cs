@@ -50,7 +50,7 @@ namespace TPI
             }
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new RegistroForm());
+            Application.Run(new Form1());
         }
     }
 }
