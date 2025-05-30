@@ -1,4 +1,5 @@
 using System.Data;
+using TPI.Forms;
 
 namespace TPI
 {
@@ -11,7 +12,26 @@ namespace TPI
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            lblMensaje.Text = "";
+            lblUsuario.Text = "";
+            lblPassword.Text = "";
+
+            if (txtUsuario.Text == "USUARIO" || txtUsuario.Text == "")
+            {
+                lblUsuario.Text = "*Debe ingresar un usuario";
+                lblUsuario.ForeColor = Color.Red;
+                txtUsuario.Focus();
+                return;
+            }
+
+            if (txtPass.Text == "PASSWORD" || txtPass.Text == "")
+            {
+                lblPassword.Text = "*Debe ingresar una contraseï¿½a";
+                lblPassword.ForeColor = Color.Red;
+                txtPass.Focus();
+                return;
+            }
+
+            lblPassword.Text = "";
             DataTable tablaLogin = new DataTable();
             Datos.Usuarios dato = new Datos.Usuarios();
             tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
@@ -20,20 +40,16 @@ namespace TPI
                 MessageBox.Show("Ingreso exitoso", "MENSAJES DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 
-                //aca abajo iria para ir al nuevo form
-
-                //FrmPrincipal Principal = new FrmPrincipal();
-
-                //Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
-
-                //Principal.usuario = Convert.ToString(txtUsuario.Text);
-                //Principal.Show();
-                //this.Hide();
+                RegistroForm registroForm = new RegistroForm();
+               // registroForm.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+               // registroForm.usuario = Convert.ToString(txtUsuario.Text);
+                registroForm.Show();
+                this.Hide();
             }
             else
             {
-                lblMensaje.Text = "*Usuario y/o contraseña incorrectos";
-                lblMensaje.ForeColor = Color.Red;
+                lblPassword.Text = "*Usuario y/o contraseï¿½a incorrectos";
+                lblPassword.ForeColor = Color.Red;
             }
         }
 
@@ -57,7 +73,7 @@ namespace TPI
 
         private void txtPass_Enter(object sender, EventArgs e)
         {
-            if(txtPass.Text == "CONTRASEÑA")
+            if(txtPass.Text == "PASSWORD")
             {
                 txtPass.Text = "";
                 txtPass.ForeColor = Color.Black;
@@ -69,7 +85,7 @@ namespace TPI
         {
             if(txtPass.Text == "")
             {
-                txtPass.Text = "CONTRASEÑA";
+                txtPass.Text = "PASSWORD";
                 txtPass.ForeColor = Color.Silver;
                 txtPass.UseSystemPasswordChar = false;
             }
