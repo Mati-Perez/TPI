@@ -22,11 +22,11 @@ namespace TPI.Datos
             this.servidor = "localhost";
             this.puerto = "3306";
             this.usuario = "root";
-<<<<<<< HEAD
+
             this.clave = "admin";
-=======
-            this.clave = "root";
->>>>>>> master
+
+            //this.clave = "root";
+
         }
 
         public MySqlConnection CrearConexion()

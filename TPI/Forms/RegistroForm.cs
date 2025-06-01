@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TPI.Datos;
+using TPI.Entidades;
+using TPI.Servicios;
+
 
 namespace TPI.Forms
 {
@@ -16,33 +20,21 @@ namespace TPI.Forms
     {
         //inicializo combo box
         static string[] tipo = { "SOCIO", "NO SOCIO", "PROFESOR" };
-        static string[] mes = { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" };
+        static string[] tipoDni = { "DNI", "LE", "LC", "CI", "PASAPORTE" };
 
 
-        static void llenarCombo(ComboBox comboTipo, ComboBox comboDia, ComboBox comboMes, ComboBox comboYear)
+        static void llenarCombo(ComboBox TipoRegistro, ComboBox TipoDni)
         {
             foreach (string item in tipo)
             {
-                comboTipo.Items.Add(item);
+                TipoRegistro.Items.Add(item);
             }
 
-
-            for (int i = 1; i <= 31; i++)
+            foreach (string item in tipoDni)
             {
-                comboDia.Items.Add(i.ToString());
+                TipoDni.Items.Add(item);
             }
 
-            foreach (string item in mes)
-            {
-                comboMes.Items.Add(item);
-            }
-
-
-            int year = DateTime.Now.Year;
-            for (int i = 1800; i <= (year - 5); i++)
-            {
-                comboYear.Items.Add(i.ToString());
-            }
         }
 
         public RegistroForm()
@@ -50,10 +42,12 @@ namespace TPI.Forms
             InitializeComponent();
             Show_date();
             Show_Time();
-            comboTipo.Text = "SOCIO"; // Set default value
+            cbTipoRegistro.Text = "SOCIO"; // Set default value
+            cbTipoDni.Text = "DNI"; // Set default value
             listRegistro.GridLines = true; //-> permite dibujar la grilla , las celdas 
             listRegistro.FullRowSelect = true; // -> permite selecionar la fila completa
-            llenarCombo(comboTipo, comboDia, comboMes, comboYear);
+            llenarCombo(cbTipoRegistro, cbTipoDni);
+            CargarSociosEnListView();
         }
 
         private void Show_date()
@@ -71,41 +65,66 @@ namespace TPI.Forms
 
         }
 
+        private void limpiarCampos()
+        {
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            cbTipoDni.Text = "DNI";
+            txtDni.Text = string.Empty;
+            txtCalle.Text = string.Empty;
+            txtAltura.Text = string.Empty;
+            txtLocalidad.Text = string.Empty;
+            txtCp.Text = string.Empty;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Show_date();
             Show_Time();
 
-            string id = new Random().Next(100).ToString();
-            string sexo = radioM.Checked ? "MUJER" : "HOMBRE";
-            String fechaNacimiento = comboDia.Text + "/" + comboMes.Text + "/" + comboYear.Text;
+            string direccion = txtCalle.Text.Trim() + " " + txtAltura.Text + " " + txtLocalidad.Text + " " + txtCp.Text;
 
-            string telefono = txtPreTel.Text + "-" + txtTel.Text;
-            string telefonoEmergencia = txtPreEmerg.Text + "-" + txtTelEmerg.Text;
+            // Corrected object initialization to match the constructor signature
+            var newSocio = new Socio(
+                null, // Assuming NumCarnet is optional and can be null
+                txtNombre.Text.Trim(),
+                txtApellido.Text.Trim(),
+                cbTipoDni.Text,
+                Convert.ToInt32(txtDni.Text),
+                direccion,
+                DateTime.Now, // Fecha de inscripción actual
+                true // Asumimos que el carnet está activo al registrarlo
+            );
 
-            ListViewItem fila = new ListViewItem(id);
-            fila.SubItems.Add(txtNombre.Text);
-            fila.SubItems.Add(txtApellido.Text);
-            fila.SubItems.Add(comboTipo.Text);
-            fila.SubItems.Add(sexo == "MUJER" ? "F" : "M");
-            fila.SubItems.Add(txtDni.Text);
-            fila.SubItems.Add(txtEmail.Text);
-            fila.SubItems.Add(fechaNacimiento);
-            fila.SubItems.Add(telefono);
-            fila.SubItems.Add(telefonoEmergencia);
-            fila.SubItems.Add(txtCalle.Text);
-            fila.SubItems.Add(txtAltura.Text);
-            fila.SubItems.Add(txtPiso.Text);
-            fila.SubItems.Add(txtLetra.Text);
-            fila.SubItems.Add(txtLocalidad.Text);
-            fila.SubItems.Add(txtCp.Text);
-            fila.SubItems.Add(lblFecha.Text);
-            fila.SubItems.Add(lblHora.Text);
-
-
-            listRegistro.Items.Add(fila);
+            SocioService.RegistrarSocio(newSocio); // Registrar el nuevo socio
+            CargarSociosEnListView();
             tabControl1.SelectedTab = tabPage2;
+            limpiarCampos(); // Limpiar los campos después de registrar
         }
 
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarSociosEnListView()
+        {
+            List<Socio> socios = SocioService.ObtenerSocios(); // Asumiendo que tienes un método para obtener los socios
+
+             listRegistro.Items.Clear(); // limpia el listView antes de cargar
+
+            foreach (var s in socios)
+            {
+                ListViewItem item = new ListViewItem(s.NumCarnet.ToString());
+                item.SubItems.Add(s.Nombre);
+                item.SubItems.Add(s.Apellido);
+                item.SubItems.Add(s.TipoDoc); // suponiendo que lo tengas
+                item.SubItems.Add(s.Dni.ToString());
+                item.SubItems.Add(s.Direccion); // ya formateada
+                item.SubItems.Add(s.FechaInscripcion.ToShortDateString());
+
+                listRegistro.Items.Add(item);
+            }
+        }
     }
 }

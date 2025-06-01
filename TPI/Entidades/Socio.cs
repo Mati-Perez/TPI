@@ -9,18 +9,14 @@ namespace TPI.Entidades
 {
     public class Socio : Cliente
     {
-        public int NumCarnet { get; set; }
+        public int? NumCarnet { get; set; }
         public DateTime FechaInscripcion { get; set; }
-        public string TipoCuota { get; set; }
         public bool Carnet { get; set; }
 
-        public Socio(int numCarnet, DateTime fechaInscripcion, string tipoCuota, bool carnet,
-            string nombre, string apellido, int dni, string direccion)
-            : base(nombre, apellido, dni, direccion)
+        public Socio(int? numCarnet,string nombre, string apellido, string tipoDoc, int dni, string direccion, DateTime fechaInscripcion, bool carnet): base(nombre, apellido, tipoDoc, dni, direccion)
         {
             NumCarnet = numCarnet;
             FechaInscripcion = fechaInscripcion;
-            TipoCuota = tipoCuota;
             Carnet = carnet;
         }
     }

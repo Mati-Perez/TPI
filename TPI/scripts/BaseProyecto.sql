@@ -27,14 +27,17 @@ insert into usuario(CodUsu,NombreUsu,PassUsu,RolUsu) values
 
 
 create table socio(
-NumCarnet int,
+NumCarnet int not null auto_increment,
 Nombre varchar(30),
 Apellido varchar(20),
 TipoDoc varchar(20),
 Documento int,
-Direccion varchar(20),
+Calle varchar(20),
+Altura int,
+Localidad varchar(20),
+CP int,
 FechaInscripcion date,
-carnet boolean,
+carnet boolean default false,
 
 constraint pk_socio primary key(NumCarnet)
 );

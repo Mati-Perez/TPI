@@ -10,8 +10,8 @@ namespace TPI.Entidades
     {
         public int IdNoSocio { get; set; }
 
-        public NoSocio(int idNoSocio, string nombre, string apellido, int dni, string direccion)
-            : base(nombre, apellido, dni, direccion)
+        public NoSocio(int idNoSocio, string nombre, string apellido,string tipoDoc, int dni, string direccion)
+            : base(nombre, apellido, tipoDoc, dni, direccion)
         {
             IdNoSocio = idNoSocio;
         }
