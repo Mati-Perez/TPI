@@ -45,7 +45,7 @@ namespace TPI
                // registroForm.usuario = Convert.ToString(txtUsuario.Text);
                 registroForm.Show();
                 this.Hide();
-                //agregue
+                //agregue para forzar que abra los dos formularios porque el de cuota no lo estaba abriendo
                 CuotaForm cuotaForm = new CuotaForm();
                 cuotaForm.Show();
                 this.Hide();
