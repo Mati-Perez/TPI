@@ -83,3 +83,16 @@ create table pagoDiario(
     constraint fk_pagoDiario_actividad foreign key(IdActividad) references actividad(IdActividad)
 
 );
+-- hago que ID de la cuota sea autoincremental
+ALTER TABLE cuota MODIFY COLUMN IdCuota INT AUTO_INCREMENT;
+--agrego cuotas 
+INSERT INTO cuota (NumCarnet, Monto, Tipo, FechaPago, FechaVencimiento, Estado)
+SELECT 
+    NumCarnet,
+    5000,                -- Monto de la cuota (ajustable)
+    'Mensual',           -- Tipo de cuota
+    NULL,                -- Fecha de pago aún no registrada
+    '2025-06-30',        -- Fecha de vencimiento (puede cambiarse por mes)
+    FALSE                -- Estado: FALSE = pendiente de pago
+FROM socio;
+
