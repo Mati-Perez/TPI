@@ -14,7 +14,7 @@ namespace TPI
             var dbService = new BaseDatosService();
             dbService.CrearBaseYTablas(); // <-- crea base y tablas
 
-            var cuotaService = new CuotaService();
+            /**var cuotaService = new CuotaService();
 
             var cuota = new Cuota(
                 idCuota: 101,
@@ -47,11 +47,10 @@ namespace TPI
             foreach (var c in cuotaService.ObtenerCuotas())
             {
                 Console.WriteLine($"Cuota {c.IdCuota} - Estado: {c.Estado}, Fecha de Pago: {c.FechaPago}");
-            }
+            } **/
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
-
             Application.Run(new RegistroForm());
             Application.Run(new CuotaForm());
 

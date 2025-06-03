@@ -107,6 +107,8 @@ namespace TPI.Forms
 
         }
 
+
+
         private void CargarSociosEnListView()
         {
             List<Socio> socios = SocioService.ObtenerSocios(); // Asumiendo que tienes un método para obtener los socios

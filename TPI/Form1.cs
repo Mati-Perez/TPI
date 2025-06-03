@@ -45,6 +45,10 @@ namespace TPI
                // registroForm.usuario = Convert.ToString(txtUsuario.Text);
                 registroForm.Show();
                 this.Hide();
+                //agregue
+                CuotaForm cuotaForm = new CuotaForm();
+                cuotaForm.Show();
+                this.Hide();
             }
             else
             {

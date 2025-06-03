@@ -23,9 +23,9 @@ namespace TPI.Datos
             this.puerto = "3306";
             this.usuario = "root";
 
-            this.clave = "admin";
+            //this.clave = "admin";
 
-            //this.clave = "root";
+            this.clave = "root";
 
         }
 
