@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPI.Datos;
+using TPI.Entidades;
 
 namespace TPI.Forms
 {
@@ -16,6 +17,7 @@ namespace TPI.Forms
         public CuotaForm()
         {
             InitializeComponent();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -65,5 +67,36 @@ namespace TPI.Forms
             }
         }
 
+        private void btnMostrarCuotas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CuotaBD cuotaBD = new CuotaBD();
+                DataTable dt = cuotaBD.ObtenerCuotas();
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron cuotas.");
+                }
+
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las cuotas: " + ex.Message);
+            }
+        }
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

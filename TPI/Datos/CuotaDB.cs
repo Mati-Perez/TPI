@@ -40,5 +40,26 @@ namespace TPI.Datos
                 throw new Exception("Error al actualizar la cuota: " + ex.Message);
             }
         }
+
+        public DataTable ObtenerCuotas()
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM cuota";
+            using (var con = Conexion.getInstancia().CrearConexion())
+            {
+                con.Open();
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
+        }
+
     }
+
+
 }

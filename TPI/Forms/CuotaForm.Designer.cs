@@ -1,4 +1,5 @@
-﻿namespace TPI.Forms
+﻿
+namespace TPI.Forms
 {
     partial class CuotaForm
     {
@@ -33,6 +34,9 @@
             lblFechaPago = new Label();
             dtpFechaPago = new DateTimePicker();
             btnRegistrarPago = new Button();
+            btnMostrarCuotas = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblNumCarnet
@@ -71,7 +75,7 @@
             // 
             // btnRegistrarPago
             // 
-            btnRegistrarPago.Location = new Point(597, 339);
+            btnRegistrarPago.Location = new Point(872, 49);
             btnRegistrarPago.Name = "btnRegistrarPago";
             btnRegistrarPago.Size = new Size(148, 52);
             btnRegistrarPago.TabIndex = 4;
@@ -79,11 +83,33 @@
             btnRegistrarPago.UseVisualStyleBackColor = true;
             btnRegistrarPago.Click += button1_Click;
             // 
+            // btnMostrarCuotas
+            // 
+            btnMostrarCuotas.Location = new Point(872, 167);
+            btnMostrarCuotas.Name = "btnMostrarCuotas";
+            btnMostrarCuotas.Size = new Size(148, 55);
+            btnMostrarCuotas.TabIndex = 5;
+            btnMostrarCuotas.Text = "Mostrar Cuotas";
+            btnMostrarCuotas.UseVisualStyleBackColor = true;
+            btnMostrarCuotas.Click += btnMostrarCuotas_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(47, 167);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(795, 225);
+            dataGridView1.TabIndex = 6;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
             // CuotaForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1067, 450);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnMostrarCuotas);
             Controls.Add(btnRegistrarPago);
             Controls.Add(dtpFechaPago);
             Controls.Add(lblFechaPago);
@@ -91,16 +117,19 @@
             Controls.Add(lblNumCarnet);
             Name = "CuotaForm";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
 
+        #endregion
         private Label lblNumCarnet;
         private TextBox txtNumCarnet;
         private Label lblFechaPago;
         private DateTimePicker dtpFechaPago;
         private Button btnRegistrarPago;
+        private Button btnMostrarCuotas;
+        private DataGridView dataGridView1;
     }
 }
