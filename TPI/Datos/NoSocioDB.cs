@@ -5,18 +5,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TPI.Entidades;
-
 
 namespace TPI.Datos
 {
-    internal class SocioBD
+    internal class NoSocioDB
     {
-        public DataTable GetSocios()
+        public DataTable GetNoSocios()
         {
             DataTable ds = new DataTable();
 
-            string query = "SELECT * FROM socio;";
+            string query = "SELECT * FROM noSocio;";
             try
             {
                 using (var sqlcon = Conexion.getInstancia().CrearConexion())
@@ -43,9 +41,9 @@ namespace TPI.Datos
             return ds;
         }
 
-        public void AddSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp, DateTime fechaInscripcion)
+        public void AddNoSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp, DateTime fechaInscripcion)
         {
-            string query = @"INSERT INTO socio (Nombre, Apellido,TipoDoc, Documento, Calle, Altura, Localidad, CP, FechaInscripcion)
+            string query = @"INSERT INTO NoSocio (Nombre, Apellido,TipoDoc, Documento, Calle, Altura, Localidad, CP, FechaInscripcion)
                          VALUES (@Nombre, @Apellido,@tipoDoc, @Documento, @Calle, @Altura, @Localidad, @CP, @FechaInscripcion);";
 
 
@@ -82,22 +80,22 @@ namespace TPI.Datos
             }
         }
 
-        public DataTable GetSocioByDni(int dni)
+        public DataTable GetNoSocioByDni(int dni)
         {
             DataTable socio = new DataTable();
-            string query = @"SELECT * FROM SOCIO WHERE DOCUMENTO = @DNI;";
+            string query = @"SELECT * FROM noSocio WHERE DOCUMENTO = @DNI;";
             try
-            { 
-                using(var sqlcon = Conexion.getInstancia().CrearConexion())
+            {
+                using (var sqlcon = Conexion.getInstancia().CrearConexion())
                 {
                     sqlcon.Open();
                     using (var command = new MySqlCommand(query, sqlcon))
                     {
                         command.Parameters.AddWithValue("@DNI", dni);
-                         using (var reader = command.ExecuteReader())
-                         {
+                        using (var reader = command.ExecuteReader())
+                        {
                             socio.Load(reader);
-                         }
+                        }
                     }
                 }
                 return socio;
@@ -110,9 +108,9 @@ namespace TPI.Datos
 
         }
 
-        public int DeleteSocio(int dni)
+        public int DeleteNoSocio(int dni)
         {
-            string query = @"DELETE FROM socio WHERE Documento = @DNI;";
+            string query = @"DELETE FROM noSocio WHERE Documento = @DNI;";
             try
             {
                 using (var sqlcon = Conexion.getInstancia().CrearConexion())
@@ -132,24 +130,24 @@ namespace TPI.Datos
             }
         }
 
-        public int UpdateSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp) 
+        public int UpdateNoSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp)
         {
 
-            string query  = @"UPDATE socio SET Nombre = @Nombre, Apellido = @Apellido, TipoDoc = @TipoDoc, Documento = @Documento, 
+            string query = @"UPDATE noSocio SET Nombre = @Nombre, Apellido = @Apellido, TipoDoc = @TipoDoc, Documento = @Documento, 
                                   Calle = @Calle, Altura = @Altura, Localidad = @Localidad, CP = @CP WHERE Documento = @Documento;";
             try
             {
-                using (var sqlcon = Conexion.getInstancia().CrearConexion()) 
+                using (var sqlcon = Conexion.getInstancia().CrearConexion())
                 {
                     sqlcon.Open();
-                    using (var command = new MySqlCommand(query, sqlcon)) 
+                    using (var command = new MySqlCommand(query, sqlcon))
                     {
                         command.Parameters.AddWithValue("@Nombre", nombre);
                         command.Parameters.AddWithValue("@Apellido", apellido);
                         command.Parameters.AddWithValue("@TipoDoc", tipoDni);
-                        command.Parameters.AddWithValue("@Documento", dni); 
+                        command.Parameters.AddWithValue("@Documento", dni);
                         command.Parameters.AddWithValue("@Calle", calle);
-                        command.Parameters.AddWithValue("@Altura", altura); 
+                        command.Parameters.AddWithValue("@Altura", altura);
                         command.Parameters.AddWithValue("@Localidad", localidad);
                         command.Parameters.AddWithValue("@CP", cp);
 
@@ -163,7 +161,5 @@ namespace TPI.Datos
                 throw new Exception("Error al actualizar el socio: " + ex.Message);
             }
         }
-
-
     }
 }

@@ -30,8 +30,9 @@
         {
             tabControl1 = new TabControl();
             REGISTRO = new TabPage();
-            button2 = new Button();
-            button1 = new Button();
+            btnActualizar = new Button();
+            btnRegistrar = new Button();
+            btnCancelar = new Button();
             groupBox7 = new GroupBox();
             cbTipoRegistro = new ComboBox();
             groupBox6 = new GroupBox();
@@ -56,7 +57,7 @@
             label1 = new Label();
             groupBox5 = new GroupBox();
             lblFecha = new Label();
-            tabPage2 = new TabPage();
+            SOCIO = new TabPage();
             listRegistro = new ListView();
             ID = new ColumnHeader();
             NOMBRE = new ColumnHeader();
@@ -65,7 +66,33 @@
             DNI = new ColumnHeader();
             DIRECCION = new ColumnHeader();
             FECHAREGISTRO = new ColumnHeader();
-            tabPage3 = new TabPage();
+            groupBox3 = new GroupBox();
+            btnEliminar = new Button();
+            btnEditar = new Button();
+            NOSOCIO = new TabPage();
+            listNoSocio = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            groupBox4 = new GroupBox();
+            btnDeleteNoSocio = new Button();
+            btnEditNoSocio = new Button();
+            PROFESORES = new TabPage();
+            listProfesores = new ListView();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            groupBox8 = new GroupBox();
+            btnDeleteProfesor = new Button();
+            btnEditProfesor = new Button();
             tabControl1.SuspendLayout();
             REGISTRO.SuspendLayout();
             groupBox7.SuspendLayout();
@@ -73,14 +100,20 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox5.SuspendLayout();
-            tabPage2.SuspendLayout();
+            SOCIO.SuspendLayout();
+            groupBox3.SuspendLayout();
+            NOSOCIO.SuspendLayout();
+            groupBox4.SuspendLayout();
+            PROFESORES.SuspendLayout();
+            groupBox8.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(REGISTRO);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(SOCIO);
+            tabControl1.Controls.Add(NOSOCIO);
+            tabControl1.Controls.Add(PROFESORES);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -92,8 +125,9 @@
             // REGISTRO
             // 
             REGISTRO.BackColor = SystemColors.Control;
-            REGISTRO.Controls.Add(button2);
-            REGISTRO.Controls.Add(button1);
+            REGISTRO.Controls.Add(btnActualizar);
+            REGISTRO.Controls.Add(btnRegistrar);
+            REGISTRO.Controls.Add(btnCancelar);
             REGISTRO.Controls.Add(groupBox7);
             REGISTRO.Controls.Add(groupBox6);
             REGISTRO.Controls.Add(groupBox2);
@@ -106,24 +140,34 @@
             REGISTRO.TabIndex = 0;
             REGISTRO.Text = "REGISTRO";
             // 
-            // button2
+            // btnActualizar
             // 
-            button2.Location = new Point(578, 346);
-            button2.Name = "button2";
-            button2.Size = new Size(202, 48);
-            button2.TabIndex = 26;
-            button2.Text = "REGISTRAR";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnActualizar.Location = new Point(578, 346);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(202, 48);
+            btnActualizar.TabIndex = 34;
+            btnActualizar.Text = "ACTUALIZAR";
+            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
-            // button1
+            // btnRegistrar
             // 
-            button1.Location = new Point(578, 292);
-            button1.Name = "button1";
-            button1.Size = new Size(202, 48);
-            button1.TabIndex = 25;
-            button1.Text = "CANCELAR";
-            button1.UseVisualStyleBackColor = true;
+            btnRegistrar.Location = new Point(578, 346);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(202, 48);
+            btnRegistrar.TabIndex = 26;
+            btnRegistrar.Text = "REGISTRAR";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += button2_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(578, 292);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(202, 48);
+            btnCancelar.TabIndex = 25;
+            btnCancelar.Text = "CANCELAR";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -347,16 +391,17 @@
             lblFecha.TabIndex = 23;
             lblFecha.Text = "12/12/2021";
             // 
-            // tabPage2
+            // SOCIO
             // 
-            tabPage2.Controls.Add(listRegistro);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(805, 414);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "LISTADO";
-            tabPage2.UseVisualStyleBackColor = true;
+            SOCIO.Controls.Add(listRegistro);
+            SOCIO.Controls.Add(groupBox3);
+            SOCIO.Location = new Point(4, 29);
+            SOCIO.Name = "SOCIO";
+            SOCIO.Padding = new Padding(3);
+            SOCIO.Size = new Size(805, 414);
+            SOCIO.TabIndex = 1;
+            SOCIO.Text = "SOCIO";
+            SOCIO.UseVisualStyleBackColor = true;
             // 
             // listRegistro
             // 
@@ -364,14 +409,15 @@
             listRegistro.Dock = DockStyle.Fill;
             listRegistro.Location = new Point(3, 3);
             listRegistro.Name = "listRegistro";
-            listRegistro.Size = new Size(799, 408);
+            listRegistro.Size = new Size(799, 342);
             listRegistro.TabIndex = 28;
             listRegistro.UseCompatibleStateImageBehavior = false;
             listRegistro.View = View.Details;
+            
             // 
             // ID
             // 
-            ID.Text = "N° SOCIO";
+            ID.Text = "ID";
             ID.Width = 100;
             // 
             // NOMBRE
@@ -404,15 +450,217 @@
             FECHAREGISTRO.Text = "FEC. REGISTRO";
             FECHAREGISTRO.Width = 160;
             // 
-            // tabPage3
+            // groupBox3
             // 
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(805, 414);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "PROFESORES";
-            tabPage3.UseVisualStyleBackColor = true;
+            groupBox3.Controls.Add(btnEliminar);
+            groupBox3.Controls.Add(btnEditar);
+            groupBox3.Dock = DockStyle.Bottom;
+            groupBox3.Location = new Point(3, 345);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(799, 66);
+            groupBox3.TabIndex = 31;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "CONTROLES";
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(632, 19);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(161, 41);
+            btnEliminar.TabIndex = 30;
+            btnEliminar.Text = "ELIMINAR";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(446, 19);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(161, 41);
+            btnEditar.TabIndex = 29;
+            btnEditar.Text = "EDITAR";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // NOSOCIO
+            // 
+            NOSOCIO.Controls.Add(listNoSocio);
+            NOSOCIO.Controls.Add(groupBox4);
+            NOSOCIO.Location = new Point(4, 29);
+            NOSOCIO.Name = "NOSOCIO";
+            NOSOCIO.Padding = new Padding(3);
+            NOSOCIO.Size = new Size(805, 414);
+            NOSOCIO.TabIndex = 2;
+            NOSOCIO.Text = "NO SOCIOS";
+            NOSOCIO.UseVisualStyleBackColor = true;
+            // 
+            // listNoSocio
+            // 
+            listNoSocio.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            listNoSocio.Dock = DockStyle.Fill;
+            listNoSocio.Location = new Point(3, 3);
+            listNoSocio.Name = "listNoSocio";
+            listNoSocio.Size = new Size(799, 342);
+            listNoSocio.TabIndex = 33;
+            listNoSocio.UseCompatibleStateImageBehavior = false;
+            listNoSocio.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "NOMBRE";
+            columnHeader2.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "APELLIDO";
+            columnHeader3.Width = 160;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "TIPO";
+            columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "DNI";
+            columnHeader5.Width = 150;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "DIRECCION";
+            columnHeader6.Width = 250;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "FEC. REGISTRO";
+            columnHeader7.Width = 160;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(btnDeleteNoSocio);
+            groupBox4.Controls.Add(btnEditNoSocio);
+            groupBox4.Dock = DockStyle.Bottom;
+            groupBox4.Location = new Point(3, 345);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(799, 66);
+            groupBox4.TabIndex = 32;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "CONTROLES";
+            // 
+            // btnDeleteNoSocio
+            // 
+            btnDeleteNoSocio.Location = new Point(632, 19);
+            btnDeleteNoSocio.Name = "btnDeleteNoSocio";
+            btnDeleteNoSocio.Size = new Size(161, 41);
+            btnDeleteNoSocio.TabIndex = 30;
+            btnDeleteNoSocio.Text = "ELIMINAR";
+            btnDeleteNoSocio.UseVisualStyleBackColor = true;
+            btnDeleteNoSocio.Click += btnEliminar_Click;
+            // 
+            // btnEditNoSocio
+            // 
+            btnEditNoSocio.Location = new Point(446, 19);
+            btnEditNoSocio.Name = "btnEditNoSocio";
+            btnEditNoSocio.Size = new Size(161, 41);
+            btnEditNoSocio.TabIndex = 29;
+            btnEditNoSocio.Text = "EDITAR";
+            btnEditNoSocio.UseVisualStyleBackColor = true;
+            btnEditNoSocio.Click += btnEditar_Click;
+            // 
+            // PROFESORES
+            // 
+            PROFESORES.Controls.Add(listProfesores);
+            PROFESORES.Controls.Add(groupBox8);
+            PROFESORES.Location = new Point(4, 29);
+            PROFESORES.Name = "PROFESORES";
+            PROFESORES.Padding = new Padding(3);
+            PROFESORES.Size = new Size(805, 414);
+            PROFESORES.TabIndex = 3;
+            PROFESORES.Text = "PROFESORES";
+            PROFESORES.UseVisualStyleBackColor = true;
+            // 
+            // listProfesores
+            // 
+            listProfesores.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14 });
+            listProfesores.Dock = DockStyle.Fill;
+            listProfesores.Location = new Point(3, 3);
+            listProfesores.Name = "listProfesores";
+            listProfesores.Size = new Size(799, 342);
+            listProfesores.TabIndex = 34;
+            listProfesores.UseCompatibleStateImageBehavior = false;
+            listProfesores.View = View.Details;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "ID";
+            columnHeader8.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "NOMBRE";
+            columnHeader9.Width = 200;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "APELLIDO";
+            columnHeader10.Width = 160;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "TIPO";
+            columnHeader11.Width = 100;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "DNI";
+            columnHeader12.Width = 150;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "DIRECCION";
+            columnHeader13.Width = 250;
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "FEC. REGISTRO";
+            columnHeader14.Width = 160;
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(btnDeleteProfesor);
+            groupBox8.Controls.Add(btnEditProfesor);
+            groupBox8.Dock = DockStyle.Bottom;
+            groupBox8.Location = new Point(3, 345);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new Size(799, 66);
+            groupBox8.TabIndex = 33;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "CONTROLES";
+            // 
+            // btnDeleteProfesor
+            // 
+            btnDeleteProfesor.Location = new Point(632, 19);
+            btnDeleteProfesor.Name = "btnDeleteProfesor";
+            btnDeleteProfesor.Size = new Size(161, 41);
+            btnDeleteProfesor.TabIndex = 30;
+            btnDeleteProfesor.Text = "ELIMINAR";
+            btnDeleteProfesor.UseVisualStyleBackColor = true;
+            btnDeleteProfesor.Click += btnEliminar_Click;
+            // 
+            // btnEditProfesor
+            // 
+            btnEditProfesor.Location = new Point(446, 19);
+            btnEditProfesor.Name = "btnEditProfesor";
+            btnEditProfesor.Size = new Size(161, 41);
+            btnEditProfesor.TabIndex = 29;
+            btnEditProfesor.Text = "EDITAR";
+            btnEditProfesor.UseVisualStyleBackColor = true;
+            btnEditProfesor.Click += btnEditar_Click;
             // 
             // RegistroForm
             // 
@@ -434,15 +682,20 @@
             groupBox1.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
-            tabPage2.ResumeLayout(false);
+            SOCIO.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            NOSOCIO.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            PROFESORES.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private TabPage REGISTRO;
         private ComboBox cbTipoRegistro;
-        private Button button2;
-        private Button button1;
+        private Button btnRegistrar;
+        private Button btnCancelar;
         private GroupBox groupBox2;
         private TextBox txtAltura;
         private Label label15;
@@ -461,7 +714,7 @@
         private Label label2;
         private TextBox txtNombre;
         private Label label1;
-        private TabPage tabPage2;
+        private TabPage SOCIO;
         private ListView listRegistro;
         private ColumnHeader ID;
         private ColumnHeader NOMBRE;
@@ -469,7 +722,7 @@
         private ColumnHeader DNI;
         private ColumnHeader DIRECCION;
         private ColumnHeader FECHAREGISTRO;
-        private TabPage tabPage3;
+        private TabPage NOSOCIO;
         private GroupBox groupBox6;
         private GroupBox groupBox5;
         private GroupBox groupBox7;
@@ -477,5 +730,32 @@
         private TabControl tabControl1;
         private Label label9;
         private ComboBox cbTipoDni;
+        private Button btnEliminar;
+        private Button btnEditar;
+        private Button btnActualizar;
+        private TabPage PROFESORES;
+        private GroupBox groupBox3;
+        private GroupBox groupBox4;
+        private Button btnDeleteNoSocio;
+        private Button btnEditNoSocio;
+        private ListView listNoSocio;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ListView listProfesores;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private GroupBox groupBox8;
+        private Button btnDeleteProfesor;
+        private Button btnEditProfesor;
     }
 }
