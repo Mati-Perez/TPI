@@ -11,15 +11,15 @@ namespace TPI.Servicios
 {
     public class SocioService
     {
-        private readonly List<Socio> socios = new List<Socio>();
+        //private readonly List<Socio> socios = new List<Socio>();
 
         public static void RegistrarSocio(Socio socio)
         {
             var repo = new SocioBD();
-            string calle = socio.Direccion.Split(' ')[0]; // Asumiendo que la dirección está en el formato "Calle Altura, Localidad CP"
-            int altura = Convert.ToInt32(socio.Direccion.Split(' ')[1]); // Asumiendo que la altura es el segundo elemento de la dirección
-            string localidad = socio.Direccion.Split(' ')[2]; // Asumiendo que la localidad es el tercer elemento de la dirección
-            int cp = Convert.ToInt32(socio.Direccion.Split(' ')[3]); // Asumiendo que el CP es el cuarto elemento de la dirección
+            string calle = socio.Direccion.Split(',')[0]; // Asumiendo que la dirección está en el formato "Calle Altura, Localidad CP"
+            int altura = Convert.ToInt32(socio.Direccion.Split(',')[1]); // Asumiendo que la altura es el segundo elemento de la dirección
+            string localidad = socio.Direccion.Split(',')[2]; // Asumiendo que la localidad es el tercer elemento de la dirección
+            int cp = Convert.ToInt32(socio.Direccion.Split(',')[3]); // Asumiendo que el CP es el cuarto elemento de la dirección
 
             try
             {
@@ -56,7 +56,7 @@ namespace TPI.Servicios
                 (row["Apellido"]?.ToString() ?? ""),
                 (row["TipoDoc"]?.ToString() ?? ""),
                 Convert.ToInt32(row["Documento"]),
-                $"{row["Calle"]?.ToString() ?? ""} {row["Altura"]?.ToString() ?? ""}, {row["Localidad"]?.ToString() ?? ""} {row["CP"]?.ToString() ?? ""}",
+                $"{row["Calle"]?.ToString() ?? ""}, {row["Altura"]?.ToString() ?? ""}, {row["Localidad"]?.ToString() ?? ""}, {row["CP"]?.ToString() ?? ""}",
                 Convert.ToDateTime(row["FechaInscripcion"]),
                 Convert.ToBoolean(row["Carnet"])
                 );
@@ -66,25 +66,41 @@ namespace TPI.Servicios
             return socios;
         }
 
-        public void ModificarSocio(int numCarnet, string nombre, string apellido, int dni, string direccion)
+        public static void ModificarSocio(Socio update)
         {
-            var socio = socios.FirstOrDefault(s => s.NumCarnet == numCarnet);
-            if (socio != null)
+            string calle = update.Direccion.Split(',')[0]; // Asumiendo que la dirección está en el formato "Calle Altura, Localidad CP"
+            int altura = Convert.ToInt32(update.Direccion.Split(',')[1]); // Asumiendo que la altura es el segundo elemento de la dirección
+            string localidad = update.Direccion.Split(',')[2]; // Asumiendo que la localidad es el tercer elemento de la dirección
+            int cp = Convert.ToInt32(update.Direccion.Split(',')[3]); // Asumiendo que el CP es el cuarto elemento de la dirección
+
+            var repo = new SocioBD();
+            var response = repo.UpdateSocio(update.Nombre, update.Apellido,update.TipoDoc, update.Dni, calle, altura, localidad, cp);
+
+            if (response > 0)
             {
-                socio.Nombre = nombre;
-                socio.Apellido = apellido;
-                socio.Dni = dni;
-                socio.Direccion = direccion;
+                MessageBox.Show("Socio modificado correctamente.");
             }
+            else
+            {
+                MessageBox.Show("Error al modificar el socio. Verifique los datos ingresados.");
+            }
+
         }
 
-        public void DarDeBajaSocio(int numCarnet)
+        public static void DarDeBajaSocio(int dni)
         {
-            var socio = socios.FirstOrDefault(s => s.NumCarnet == numCarnet);
-            if (socio != null)
+            var repo = new SocioBD();
+            int response =  repo.DeleteSocio(dni);
+
+            if (response > 0)
             {
-                socios.Remove(socio);
+                MessageBox.Show("El Socio se elimino correctamente.");
             }
+            else
+            {
+                MessageBox.Show("Error al eliminar el socio. Verifique la existencia.");
+            }
+
         }
     }
 }

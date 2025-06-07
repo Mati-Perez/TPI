@@ -28,13 +28,13 @@ insert into usuario(CodUsu,NombreUsu,PassUsu,RolUsu) values
 
 create table socio(
 NumCarnet int not null auto_increment,
-Nombre varchar(30),
-Apellido varchar(20),
-TipoDoc varchar(20),
+Nombre varchar(60),
+Apellido varchar(60),
+TipoDoc varchar(10),
 Documento int,
-Calle varchar(20),
+Calle varchar(100),
 Altura int,
-Localidad varchar(20),
+Localidad varchar(100),
 CP int,
 FechaInscripcion date,
 carnet boolean default false,
@@ -55,12 +55,18 @@ create table cuota(
 );
 
 create table noSocio(
-	IdNoSocio int primary key,
+	IdNoSocio int not null auto_increment,
 	Nombre varchar(30),
 	Apellido varchar(20),
-    TipoDoc varchar(20),
+    TipoDoc varchar(10),
 	Documento int,
-	Direccion varchar(20)
+    Calle varchar(100),
+	Altura int,
+    Localidad varchar(100),
+    CP int,
+    FechaInscripcion date,
+    
+    constraint pk_noSocio primary key(IdNoSocio)
 );
 
 create table actividad(
