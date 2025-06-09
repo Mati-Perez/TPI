@@ -24,7 +24,7 @@ namespace TPI.Forms
         static string[] tipoDni = { "DNI", "LE", "LC", "CI", "PASAPORTE" };
 
 
-
+        private DashBoard dashBoard; // Variable para almacenar la instancia de DashBoard
         static void llenarCombo(ComboBox TipoRegistro, ComboBox TipoDni)
         {
             foreach (string item in tipo)
@@ -39,13 +39,19 @@ namespace TPI.Forms
 
         }
 
-        public RegistroForm()
+        public RegistroForm(DashBoard dashboard = null, string comboBox = "SOCIO", bool bloqueo = false)
         {
             InitializeComponent();
+            this.dashBoard = dashboard; // Asigna la instancia de DashBoard a la variable de clase
             Show_date();
             Show_Time();
-            cbTipoRegistro.Text = "SOCIO"; // Set default value
+            cbTipoRegistro.Text = comboBox; // Set default value
             cbTipoDni.Text = "DNI"; // Set default value
+
+            if (bloqueo)
+            {
+                cbTipoRegistro.Enabled = false; // Bloquea el ComboBox si el parámetro es true
+            }
 
             listRegistro.GridLines = true; //-> permite dibujar la grilla , las celdas 
             listRegistro.FullRowSelect = true; // -> permite selecionar la fila completa
@@ -62,7 +68,7 @@ namespace TPI.Forms
             llenarCombo(cbTipoRegistro, cbTipoDni);
 
             CargarSociosEnListView();
-            CargarNoSociosEnListView(); // Carga los no socios al iniciar el formulario
+            CargarNoSociosEnListView();
 
             btnActualizar.Visible = false;
         }
@@ -75,11 +81,6 @@ namespace TPI.Forms
         private void Show_Time()
         {
             lblHora.Text = DateTime.Now.ToLongTimeString();
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void limpiarCampos()
@@ -105,7 +106,6 @@ namespace TPI.Forms
             switch (cbTipoRegistro.Text)
             {
                 case "SOCIO":
-                    // Corrected object initialization to match the constructor signature
                     var newSocio = new Socio(
                         null, // Assuming NumCarnet is optional and can be null
                         txtNombre.Text.Trim(),
@@ -161,11 +161,11 @@ namespace TPI.Forms
 
         private void CargarSociosEnListView()
         {
-            List<Socio> socios = SocioService.ObtenerSocios(); // Asumiendo que tienes un método para obtener los socios
+            SocioService.cargarSocios(); // Carga la lista de socios desde el servicio
 
             listRegistro.Items.Clear(); // limpia el listView antes de cargar
 
-            foreach (var s in socios)
+            foreach (var s in SocioService.ListaSocios())
             {
                 ListViewItem item = new ListViewItem(s.NumCarnet.ToString());
                 item.SubItems.Add(s.Nombre);
@@ -181,9 +181,10 @@ namespace TPI.Forms
 
         private void CargarNoSociosEnListView()
         {
-            List<NoSocio> noSocios = NoSocioService.ObtenerNoSocios(); // Asumiendo que tienes un método para obtener los no socios
+            NoSocioService.CargarNoSocios(); // Carga la lista de no socios desde el servicio
+
             listNoSocio.Items.Clear(); // limpia el listView antes de cargar
-            foreach (var ns in noSocios)
+            foreach (var ns in NoSocioService.ListaNoSocios())
             {
                 ListViewItem item = new ListViewItem(ns.IdNoSocio.ToString());
                 item.SubItems.Add(ns.Nombre);
@@ -198,10 +199,9 @@ namespace TPI.Forms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
             Button? boton = sender as Button;
 
-            if (boton == null) return;
+            if (boton == null) return; // Simplified null check
 
             ListViewItem? item = null; // Inicializa el item como null
 
@@ -217,13 +217,13 @@ namespace TPI.Forms
                         item = listNoSocio.SelectedItems[0];
                     cbTipoRegistro.Text = "NO SOCIO"; // Set default value for cbTipoRegistro
                     break;
-             
+
                 default:
                     MessageBox.Show("Botón no reconocido.");
                     return;
             }
 
-            if (item == null)
+            if (item == null) // Simplified null check
             {
                 MessageBox.Show("No hay ningún ítem seleccionado.");
                 return;
@@ -245,7 +245,6 @@ namespace TPI.Forms
                 //MessageBox.Show($"Editando Socio:\nID: {numCarnet}\nNombre: {nombre}\nApellido: {apellido}\nDNI: {dni}\nDirección: {direccion}");
             }
 
-
             // Mostrar pestaña de edición
             btnRegistrar.Visible = false;
             btnActualizar.Visible = true;
@@ -254,10 +253,9 @@ namespace TPI.Forms
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
             Button? boton = sender as Button;
 
-            if (boton == null) return;
+            if (boton == null) return; // Simplified null check
 
             ListViewItem? item = null; // Inicializa el item como null
 
@@ -277,12 +275,11 @@ namespace TPI.Forms
                     return;
             }
 
-            if (item == null)
+            if (item == null) // Simplified null check
             {
                 MessageBox.Show("No hay ningún ítem seleccionado.");
                 return;
             }
-
 
             if (item.SubItems.Count >= 1)
             {
@@ -318,14 +315,13 @@ namespace TPI.Forms
                     }
                 }
             }
-
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             string direccion = txtCalle.Text.Trim() + ", " + txtAltura.Text + ", " + txtLocalidad.Text + ", " + txtCp.Text;
 
-            switch(cbTipoRegistro.Text)
+            switch (cbTipoRegistro.Text)
             {
                 case "SOCIO":
                     // Corrected object initialization to match the constructor signature
@@ -345,7 +341,7 @@ namespace TPI.Forms
 
                     btnActualizar.Visible = false; // Oculta el botón de actualizar después de hacer clic
                     btnRegistrar.Visible = true; // Muestra el botón de registrar
-                    tabControl1.SelectedTab = SOCIO; // Cambia a la pestaña de registro
+                    tabControl1.SelectedTab = SOCIO; // Cambia a la pestaña de regist
                     limpiarCampos(); // Limpia los campos al cambiar de pestaña
                     break;
                 case "NO SOCIO":
@@ -378,6 +374,13 @@ namespace TPI.Forms
 
         }
 
-
+        private void RegistroForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (dashBoard != null)
+            {
+               dashBoard.ActualizarVista(); // Actualiza la vista del DashBoard al cerrar el formulario de registro
+            }
+               
+        }
     }
 }

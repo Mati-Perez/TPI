@@ -119,7 +119,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.ShowToolTips = true;
-            tabControl1.Size = new Size(813, 447);
+            tabControl1.Size = new Size(825, 447);
             tabControl1.TabIndex = 0;
             // 
             // REGISTRO
@@ -136,13 +136,13 @@
             REGISTRO.Location = new Point(4, 29);
             REGISTRO.Name = "REGISTRO";
             REGISTRO.Padding = new Padding(3);
-            REGISTRO.Size = new Size(805, 414);
+            REGISTRO.Size = new Size(817, 414);
             REGISTRO.TabIndex = 0;
             REGISTRO.Text = "REGISTRO";
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(578, 346);
+            btnActualizar.Location = new Point(588, 345);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(202, 48);
             btnActualizar.TabIndex = 34;
@@ -152,7 +152,7 @@
             // 
             // btnRegistrar
             // 
-            btnRegistrar.Location = new Point(578, 346);
+            btnRegistrar.Location = new Point(588, 345);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(202, 48);
             btnRegistrar.TabIndex = 26;
@@ -162,7 +162,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(578, 292);
+            btnCancelar.Location = new Point(588, 291);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(202, 48);
             btnCancelar.TabIndex = 25;
@@ -172,7 +172,7 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(cbTipoRegistro);
-            groupBox7.Location = new Point(578, 172);
+            groupBox7.Location = new Point(588, 171);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(202, 76);
             groupBox7.TabIndex = 33;
@@ -190,7 +190,7 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(lblHora);
-            groupBox6.Location = new Point(578, 95);
+            groupBox6.Location = new Point(588, 94);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(202, 56);
             groupBox6.TabIndex = 32;
@@ -217,7 +217,7 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(txtCp);
-            groupBox2.Location = new Point(8, 200);
+            groupBox2.Location = new Point(18, 199);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(555, 190);
             groupBox2.TabIndex = 20;
@@ -298,7 +298,7 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtNombre);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(8, 16);
+            groupBox1.Location = new Point(18, 15);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(555, 178);
             groupBox1.TabIndex = 19;
@@ -374,7 +374,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(lblFecha);
-            groupBox5.Location = new Point(578, 20);
+            groupBox5.Location = new Point(588, 19);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(202, 56);
             groupBox5.TabIndex = 31;
@@ -398,7 +398,7 @@
             SOCIO.Location = new Point(4, 29);
             SOCIO.Name = "SOCIO";
             SOCIO.Padding = new Padding(3);
-            SOCIO.Size = new Size(805, 414);
+            SOCIO.Size = new Size(817, 414);
             SOCIO.TabIndex = 1;
             SOCIO.Text = "SOCIO";
             SOCIO.UseVisualStyleBackColor = true;
@@ -409,11 +409,10 @@
             listRegistro.Dock = DockStyle.Fill;
             listRegistro.Location = new Point(3, 3);
             listRegistro.Name = "listRegistro";
-            listRegistro.Size = new Size(799, 342);
+            listRegistro.Size = new Size(811, 342);
             listRegistro.TabIndex = 28;
             listRegistro.UseCompatibleStateImageBehavior = false;
             listRegistro.View = View.Details;
-            
             // 
             // ID
             // 
@@ -457,7 +456,7 @@
             groupBox3.Dock = DockStyle.Bottom;
             groupBox3.Location = new Point(3, 345);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(799, 66);
+            groupBox3.Size = new Size(811, 66);
             groupBox3.TabIndex = 31;
             groupBox3.TabStop = false;
             groupBox3.Text = "CONTROLES";
@@ -489,7 +488,7 @@
             NOSOCIO.Location = new Point(4, 29);
             NOSOCIO.Name = "NOSOCIO";
             NOSOCIO.Padding = new Padding(3);
-            NOSOCIO.Size = new Size(805, 414);
+            NOSOCIO.Size = new Size(817, 414);
             NOSOCIO.TabIndex = 2;
             NOSOCIO.Text = "NO SOCIOS";
             NOSOCIO.UseVisualStyleBackColor = true;
@@ -500,7 +499,7 @@
             listNoSocio.Dock = DockStyle.Fill;
             listNoSocio.Location = new Point(3, 3);
             listNoSocio.Name = "listNoSocio";
-            listNoSocio.Size = new Size(799, 342);
+            listNoSocio.Size = new Size(811, 342);
             listNoSocio.TabIndex = 33;
             listNoSocio.UseCompatibleStateImageBehavior = false;
             listNoSocio.View = View.Details;
@@ -547,7 +546,7 @@
             groupBox4.Dock = DockStyle.Bottom;
             groupBox4.Location = new Point(3, 345);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(799, 66);
+            groupBox4.Size = new Size(811, 66);
             groupBox4.TabIndex = 32;
             groupBox4.TabStop = false;
             groupBox4.Text = "CONTROLES";
@@ -579,7 +578,7 @@
             PROFESORES.Location = new Point(4, 29);
             PROFESORES.Name = "PROFESORES";
             PROFESORES.Padding = new Padding(3);
-            PROFESORES.Size = new Size(805, 414);
+            PROFESORES.Size = new Size(817, 414);
             PROFESORES.TabIndex = 3;
             PROFESORES.Text = "PROFESORES";
             PROFESORES.UseVisualStyleBackColor = true;
@@ -590,7 +589,7 @@
             listProfesores.Dock = DockStyle.Fill;
             listProfesores.Location = new Point(3, 3);
             listProfesores.Name = "listProfesores";
-            listProfesores.Size = new Size(799, 342);
+            listProfesores.Size = new Size(811, 342);
             listProfesores.TabIndex = 34;
             listProfesores.UseCompatibleStateImageBehavior = false;
             listProfesores.View = View.Details;
@@ -637,7 +636,7 @@
             groupBox8.Dock = DockStyle.Bottom;
             groupBox8.Location = new Point(3, 345);
             groupBox8.Name = "groupBox8";
-            groupBox8.Size = new Size(799, 66);
+            groupBox8.Size = new Size(811, 66);
             groupBox8.TabIndex = 33;
             groupBox8.TabStop = false;
             groupBox8.Text = "CONTROLES";
@@ -667,10 +666,12 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(813, 447);
+            ClientSize = new Size(825, 447);
             Controls.Add(tabControl1);
             Name = "RegistroForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro";
+            FormClosed += RegistroForm_FormClosed;
             tabControl1.ResumeLayout(false);
             REGISTRO.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
