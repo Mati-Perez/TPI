@@ -51,6 +51,7 @@ namespace TPI
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+            Application.Run(new DashBoard());
             Application.Run(new RegistroForm());
             Application.Run(new CuotaForm());
 

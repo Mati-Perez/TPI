@@ -11,7 +11,18 @@ namespace TPI.Servicios
 {
     public class SocioService
     {
-        //private readonly List<Socio> socios = new List<Socio>();
+        //List<Socio> socios = new List<Socio>();
+        private static List<Socio> _socios = new List<Socio>();
+
+        public static List<Socio> ListaSocios()
+        {
+            return _socios;
+        }
+
+        public static void cargarSocios() 
+        {
+            _socios = SocioService.ObtenerSocios();
+        }
 
         public static void RegistrarSocio(Socio socio)
         {
@@ -43,9 +54,9 @@ namespace TPI.Servicios
             }
         }
 
-        public static List<Socio> ObtenerSocios()
+        private static  List<Socio> ObtenerSocios()
         {
-            List<Socio> socios = new List<Socio>();
+            _socios.Clear();
             DataTable dt = new SocioBD().GetSocios();
 
             foreach (DataRow row in dt.Rows)
@@ -60,10 +71,10 @@ namespace TPI.Servicios
                 Convert.ToDateTime(row["FechaInscripcion"]),
                 Convert.ToBoolean(row["Carnet"])
                 );
-                socios.Add(socio);
+                _socios.Add(socio);
             }
 
-            return socios;
+            return _socios;
         }
 
         public static void ModificarSocio(Socio update)

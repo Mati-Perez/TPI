@@ -12,6 +12,19 @@ namespace TPI.Servicios
 {
     public class NoSocioService
     {
+        private static List<NoSocio> _noSocios = new List<NoSocio>();
+
+        public static List<NoSocio> ListaNoSocios()
+        {
+            return _noSocios;
+        }
+
+        public static void CargarNoSocios()
+        {
+            _noSocios = NoSocioService.ObtenerNoSocios();
+        }
+
+
         public static void RegistrarNoSocio(NoSocio noSocio)
         {
             var repo = new NoSocioDB();
@@ -42,9 +55,9 @@ namespace TPI.Servicios
             }
         }
 
-        public static List<NoSocio> ObtenerNoSocios()
+        private static List<NoSocio> ObtenerNoSocios()
         {
-            List<NoSocio> noSocios = new List<NoSocio>();
+            _noSocios.Clear();
             DataTable dt = new NoSocioDB().GetNoSocios();
 
             foreach (DataRow row in dt.Rows)
@@ -58,10 +71,10 @@ namespace TPI.Servicios
                 $"{row["Calle"]?.ToString() ?? ""}, {row["Altura"]?.ToString() ?? ""}, {row["Localidad"]?.ToString() ?? ""}, {row["CP"]?.ToString() ?? ""}",
                 Convert.ToDateTime(row["FechaInscripcion"])
                 );
-                noSocios.Add(noSocio);
+                _noSocios.Add(noSocio);
             }
 
-            return noSocios;
+            return _noSocios;
         }
 
         public static void ModificarNoSocio(NoSocio update)
