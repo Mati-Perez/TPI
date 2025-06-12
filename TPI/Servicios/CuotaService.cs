@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TPI.Datos;
 using TPI.Entidades;
 
 namespace TPI.Servicios
@@ -27,6 +28,30 @@ namespace TPI.Servicios
             return cuotas.FirstOrDefault(c => c.IdCuota == idCuota);
         }
 
+        public static List<dynamic> ObtenerVencimientos()
+        {
+            List <dynamic> vencimientos = new List<dynamic>();
+
+            DataTable repo = new CuotaBD().Vencimientos();
+
+            foreach (DataRow r in repo.Rows)
+            {
+                dynamic vencimiento = new
+                {
+                    Nombre = r["Nombre"].ToString(),
+                    Apellido = r["Apellido"].ToString(),
+                    NumCarnet = Convert.ToInt32(r["NumCarnet"]),
+                    Documento = Convert.ToInt32(r["Documento"]),
+                    Monto = Convert.ToSingle(r["Monto"]),
+                    FechaVencimiento = Convert.ToDateTime(r["FechaVencimiento"]),
+                    Estado = Convert.ToBoolean(r["Estado"])
+                };
+                vencimientos.Add(vencimiento);
+            }
+
+
+            return vencimientos;
+        }
         public bool PagarCuota(int idCuota)
         {
             var cuota = ObtenerCuota(idCuota);

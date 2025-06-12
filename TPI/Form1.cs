@@ -1,4 +1,5 @@
 using System.Data;
+using System.Security.Policy;
 using TPI.Forms;
 
 namespace TPI
@@ -40,15 +41,16 @@ namespace TPI
                 MessageBox.Show("Ingreso exitoso", "MENSAJES DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 
-                RegistroForm registroForm = new RegistroForm();
-               // registroForm.rol = Convert.ToString(tablaLogin.Rows[0][0]);
-               // registroForm.usuario = Convert.ToString(txtUsuario.Text);
-                registroForm.Show();
                 this.Hide();
+                DashBoard dashBoard = new DashBoard();
+                // registroForm.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                // registroForm.usuario = Convert.ToString(txtUsuario.Text);
+                dashBoard.Show();
+                dashBoard.FormClosed += (s, args) => this.Close();
                 //agregue para forzar que abra los dos formularios porque el de cuota no lo estaba abriendo
-                CuotaForm cuotaForm = new CuotaForm();
-                cuotaForm.Show();
-                this.Hide();
+                //CuotaForm cuotaForm = new CuotaForm();
+                //cuotaForm.Show();
+                //this.Hide();
             }
             else
             {
