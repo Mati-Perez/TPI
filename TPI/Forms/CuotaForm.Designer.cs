@@ -42,42 +42,47 @@ namespace TPI.Forms
             // lblNumCarnet
             // 
             lblNumCarnet.AutoSize = true;
-            lblNumCarnet.Location = new Point(47, 49);
+            lblNumCarnet.Location = new Point(38, 39);
+            lblNumCarnet.Margin = new Padding(2, 0, 2, 0);
             lblNumCarnet.Name = "lblNumCarnet";
-            lblNumCarnet.Size = new Size(158, 25);
+            lblNumCarnet.Size = new Size(131, 20);
             lblNumCarnet.TabIndex = 0;
             lblNumCarnet.Text = "Numero de Carnet";
             lblNumCarnet.Click += label1_Click;
             // 
             // txtNumCarnet
             // 
-            txtNumCarnet.Location = new Point(256, 49);
+            txtNumCarnet.Location = new Point(205, 39);
+            txtNumCarnet.Margin = new Padding(2, 2, 2, 2);
             txtNumCarnet.Name = "txtNumCarnet";
-            txtNumCarnet.Size = new Size(150, 31);
+            txtNumCarnet.Size = new Size(121, 27);
             txtNumCarnet.TabIndex = 1;
             // 
             // lblFechaPago
             // 
             lblFechaPago.AutoSize = true;
-            lblFechaPago.Location = new Point(47, 107);
+            lblFechaPago.Location = new Point(38, 86);
+            lblFechaPago.Margin = new Padding(2, 0, 2, 0);
             lblFechaPago.Name = "lblFechaPago";
-            lblFechaPago.Size = new Size(127, 25);
+            lblFechaPago.Size = new Size(105, 20);
             lblFechaPago.TabIndex = 2;
             lblFechaPago.Text = "Fecha de Pago";
             lblFechaPago.Click += label1_Click_1;
             // 
             // dtpFechaPago
             // 
-            dtpFechaPago.Location = new Point(256, 107);
+            dtpFechaPago.Location = new Point(205, 86);
+            dtpFechaPago.Margin = new Padding(2, 2, 2, 2);
             dtpFechaPago.Name = "dtpFechaPago";
-            dtpFechaPago.Size = new Size(300, 31);
+            dtpFechaPago.Size = new Size(241, 27);
             dtpFechaPago.TabIndex = 3;
             // 
             // btnRegistrarPago
             // 
-            btnRegistrarPago.Location = new Point(872, 49);
+            btnRegistrarPago.Location = new Point(698, 39);
+            btnRegistrarPago.Margin = new Padding(2, 2, 2, 2);
             btnRegistrarPago.Name = "btnRegistrarPago";
-            btnRegistrarPago.Size = new Size(148, 52);
+            btnRegistrarPago.Size = new Size(118, 42);
             btnRegistrarPago.TabIndex = 4;
             btnRegistrarPago.Text = "Registrar Pago";
             btnRegistrarPago.UseVisualStyleBackColor = true;
@@ -85,9 +90,10 @@ namespace TPI.Forms
             // 
             // btnMostrarCuotas
             // 
-            btnMostrarCuotas.Location = new Point(872, 167);
+            btnMostrarCuotas.Location = new Point(698, 134);
+            btnMostrarCuotas.Margin = new Padding(2, 2, 2, 2);
             btnMostrarCuotas.Name = "btnMostrarCuotas";
-            btnMostrarCuotas.Size = new Size(148, 55);
+            btnMostrarCuotas.Size = new Size(118, 44);
             btnMostrarCuotas.TabIndex = 5;
             btnMostrarCuotas.Text = "Mostrar Cuotas";
             btnMostrarCuotas.UseVisualStyleBackColor = true;
@@ -96,18 +102,19 @@ namespace TPI.Forms
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(47, 167);
+            dataGridView1.Location = new Point(38, 134);
+            dataGridView1.Margin = new Padding(2, 2, 2, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(795, 225);
+            dataGridView1.Size = new Size(636, 180);
             dataGridView1.TabIndex = 6;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
             // CuotaForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1067, 450);
+            ClientSize = new Size(854, 360);
             Controls.Add(dataGridView1);
             Controls.Add(btnMostrarCuotas);
             Controls.Add(btnRegistrarPago);
@@ -115,8 +122,10 @@ namespace TPI.Forms
             Controls.Add(lblFechaPago);
             Controls.Add(txtNumCarnet);
             Controls.Add(lblNumCarnet);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "CuotaForm";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "PAGOS";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

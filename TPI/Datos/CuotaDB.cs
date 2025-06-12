@@ -59,6 +59,32 @@ namespace TPI.Datos
             return dt;
         }
 
+        public DataTable Vencimientos()
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT Socio.Nombre, Socio.Apellido, Socio.NumCarnet, Socio.Documento, 
+                            Cuota.Monto, Cuota.FechaVencimiento, Cuota.Estado
+                     FROM cuota 
+                     INNER JOIN socio ON cuota.NumCarnet = socio.NumCarnet 
+                     WHERE Cuota.Estado = 0 
+                       AND Cuota.FechaVencimiento = @FechaVencimiento
+                     ORDER BY Cuota.FechaVencimiento ASC;";
+
+            using (var consql = Conexion.getInstancia().CrearConexion())
+            {
+                consql.Open();
+                using (var cmd = new MySqlCommand(query, consql))
+                {
+                    cmd.Parameters.AddWithValue("@FechaVencimiento", DateTime.Now.Date);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
+        }
+
     }
 
 

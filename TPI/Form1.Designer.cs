@@ -44,9 +44,10 @@
             btnIngresar.BackColor = Color.Indigo;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIngresar.ForeColor = SystemColors.ButtonFace;
-            btnIngresar.Location = new Point(323, 255);
+            btnIngresar.Location = new Point(369, 340);
+            btnIngresar.Margin = new Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(98, 43);
+            btnIngresar.Size = new Size(112, 57);
             btnIngresar.TabIndex = 0;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -55,9 +56,10 @@
             // txtPass
             // 
             txtPass.ForeColor = Color.Silver;
-            txtPass.Location = new Point(294, 182);
+            txtPass.Location = new Point(336, 243);
+            txtPass.Margin = new Padding(3, 4, 3, 4);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(155, 23);
+            txtPass.Size = new Size(177, 27);
             txtPass.TabIndex = 1;
             txtPass.Text = "PASSWORD";
             txtPass.Enter += txtPass_Enter;
@@ -66,9 +68,10 @@
             // txtUsuario
             // 
             txtUsuario.ForeColor = Color.Silver;
-            txtUsuario.Location = new Point(294, 115);
+            txtUsuario.Location = new Point(336, 153);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(155, 23);
+            txtUsuario.Size = new Size(177, 27);
             txtUsuario.TabIndex = 2;
             txtUsuario.Text = "USUARIO";
             txtUsuario.Enter += txtUsuario_Enter;
@@ -80,9 +83,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.GhostWhite;
-            label1.Location = new Point(285, 71);
+            label1.Location = new Point(326, 95);
             label1.Name = "label1";
-            label1.Size = new Size(173, 21);
+            label1.Size = new Size(218, 28);
             label1.TabIndex = 3;
             label1.Text = "INGRESO AL SISTEMA";
             // 
@@ -90,9 +93,10 @@
             // 
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 71);
+            pictureBox1.Location = new Point(14, 95);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(241, 145);
+            pictureBox1.Size = new Size(275, 192);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -101,27 +105,27 @@
             // 
             lblPassword.AutoSize = true;
             lblPassword.BackColor = Color.Transparent;
-            lblPassword.Location = new Point(294, 219);
+            lblPassword.Location = new Point(336, 292);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(0, 15);
+            lblPassword.Size = new Size(0, 20);
             lblPassword.TabIndex = 5;
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Location = new Point(294, 141);
+            lblUsuario.Location = new Point(336, 188);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(0, 15);
+            lblUsuario.Size = new Size(0, 20);
             lblUsuario.TabIndex = 6;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(535, 348);
+            ClientSize = new Size(611, 464);
             Controls.Add(lblUsuario);
             Controls.Add(lblPassword);
             Controls.Add(pictureBox1);
@@ -129,7 +133,9 @@
             Controls.Add(txtUsuario);
             Controls.Add(txtPass);
             Controls.Add(btnIngresar);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

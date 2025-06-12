@@ -26,7 +26,7 @@ namespace TPI.Servicios
 
         public static void RegistrarSocio(Socio socio)
         {
-            var repo = new SocioBD();
+            SocioBD repo = new SocioBD();
             string calle = socio.Direccion.Split(',')[0]; // Asumiendo que la dirección está en el formato "Calle Altura, Localidad CP"
             int altura = Convert.ToInt32(socio.Direccion.Split(',')[1]); // Asumiendo que la altura es el segundo elemento de la dirección
             string localidad = socio.Direccion.Split(',')[2]; // Asumiendo que la localidad es el tercer elemento de la dirección
@@ -80,9 +80,9 @@ namespace TPI.Servicios
         public static void ModificarSocio(Socio update)
         {
             string calle = update.Direccion.Split(',')[0]; // Asumiendo que la dirección está en el formato "Calle Altura, Localidad CP"
-            int altura = Convert.ToInt32(update.Direccion.Split(',')[1]); // Asumiendo que la altura es el segundo elemento de la dirección
-            string localidad = update.Direccion.Split(',')[2]; // Asumiendo que la localidad es el tercer elemento de la dirección
-            int cp = Convert.ToInt32(update.Direccion.Split(',')[3]); // Asumiendo que el CP es el cuarto elemento de la dirección
+            int altura = Convert.ToInt32(update.Direccion.Split(',')[1]); 
+            string localidad = update.Direccion.Split(',')[2]; 
+            int cp = Convert.ToInt32(update.Direccion.Split(',')[3]); 
 
             var repo = new SocioBD();
             var response = repo.UpdateSocio(update.Nombre, update.Apellido,update.TipoDoc, update.Dni, calle, altura, localidad, cp);

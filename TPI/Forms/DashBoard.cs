@@ -17,7 +17,16 @@ namespace TPI.Forms
         public DashBoard()
         {
             InitializeComponent();
+
+        }
+
+        private void DashBoard_Load(object sender, EventArgs e)
+        {
             ActualizarVista();
+            rbBusqNoSocioDni.Checked = true;
+            rbBusqSocioDni.Checked = true;
+            rbBusqVencimientoDni.Checked = true;
+            Show_Vencimientos(CuotaService.ObtenerVencimientos());
         }
 
         public void CantidadClientes(List<Socio> socio, List<NoSocio> noSocios)
@@ -26,6 +35,7 @@ namespace TPI.Forms
             int cantidadNoSocios = noSocios.Count();
             lblCantidadSocio.Text = cantidadSocios.ToString("D3");
             lblCantidadNoSocio.Text = cantidadNoSocios.ToString("D3");
+            lblCantidadClientes.Text = (cantidadSocios + cantidadNoSocios).ToString("D3");
         }
 
         public void ActualizarVista()
@@ -40,6 +50,7 @@ namespace TPI.Forms
 
             listVistaBusquedaSocio.Items.Clear();
             listVistaBusquedaNosocio.Items.Clear();
+            
             Show_Socios(ListadoSocios);
             Show_NoSocios(ListadoNoSocios);
             CantidadClientes(ListadoSocios, ListadoNoSocios);
@@ -55,6 +66,20 @@ namespace TPI.Forms
                 item.SubItems.Add(socio.FechaInscripcion.ToShortDateString());
 
                 listVistaBusquedaSocio.Items.Add(item);
+            }
+        }
+
+        private void Show_Vencimientos(List<dynamic> vencimientos)
+        {
+            foreach (dynamic vencimiento in vencimientos)
+            {
+                ListViewItem item = new ListViewItem(vencimiento.NumCarnet.ToString());
+                item.SubItems.Add(vencimiento.Nombre);
+                item.SubItems.Add(vencimiento.Apellido);
+                item.SubItems.Add(vencimiento.Documento.ToString());
+                item.SubItems.Add(vencimiento.Monto.ToString());
+                item.SubItems.Add(Convert.ToDateTime(vencimiento.FechaVencimiento).ToShortDateString());
+                listVistaVencimientos.Items.Add(item);
             }
         }
 
@@ -117,5 +142,32 @@ namespace TPI.Forms
             Show_NoSocios(noSocios);
 
         }
+        private void txtBusquedaVencimiento_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = txtBusquedaVencimiento.Text.Trim().ToLower();
+
+            listVistaVencimientos.Items.Clear();
+
+            var vencimientos = CuotaService.ObtenerVencimientos()
+                .Where(v => (rbBusqVencimientoDni.Checked && v.Documento.ToString().Contains(busqueda)) ||
+                            (rbBusqVencimientoNombre.Checked && (v.Nombre.ToLower().Contains(busqueda) || v.Apellido.ToLower().Contains(busqueda))) ||
+                            (rbBusqVencimientoCarnet.Checked && v.NumCarnet.ToString().Contains(busqueda))).ToList();
+
+            Show_Vencimientos(vencimientos);
+        }
+
+        private void btnPagos_Click(object sender, EventArgs e)
+        {
+            CuotaForm cuotaForm = new CuotaForm();
+            cuotaForm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegistroForm registroForm = new RegistroForm();
+            registroForm.ShowDialog();
+        }
+
+
     }
 }
