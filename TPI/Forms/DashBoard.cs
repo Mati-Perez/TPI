@@ -120,24 +120,29 @@ namespace TPI.Forms
 
         private void txtBusquedaSocio_TextChanged(object sender, EventArgs e)
         {
-            string searchDni = txtBusquedaSocio.Text.Trim();
+            string searchDni = txtBusquedaSocio.Text.Trim().ToUpper();
 
             listVistaBusquedaSocio.Items.Clear();
 
             var socios = SocioService.ListaSocios()
-                .Where(s => s.Dni.ToString().Contains(searchDni)).ToList();
+                .Where(s => (rbBusqSocioDni.Checked && s.Dni.ToString().Contains(searchDni)) ||
+                            (rbBusqSocioNombre.Checked && s.Nombre.Contains(searchDni)) ||
+                            (rbBusqSocioApellido.Checked && s.Apellido.Equals(searchDni))).ToList();
 
             Show_Socios(socios);
         }
 
         private void txtBusquedaNosocio_TextChanged(object sender, EventArgs e)
         {
-            string searchDni = txtBusquedaNosocio.Text.Trim();
+            string searchDni = txtBusquedaNosocio.Text.Trim().ToUpper();
 
             listVistaBusquedaNosocio.Items.Clear();
 
             var noSocios = NoSocioService.ListaNoSocios()
-                .Where(s => s.Dni.ToString().Contains(searchDni)).ToList();
+                .Where(ns => (rbBusqNoSocioDni.Checked && ns.Dni.ToString().Contains(searchDni)) ||
+                             (rbBusqNoSocioNombre.Checked && ns.Nombre.Contains(searchDni)) || 
+                             (rbBusqNoSocioApellido.Checked && ns.Apellido.Equals(searchDni))).ToList();
+
 
             Show_NoSocios(noSocios);
 
