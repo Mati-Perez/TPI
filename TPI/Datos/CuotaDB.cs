@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Diagnostics;
 using TPI.Entidades;
 
 namespace TPI.Datos
@@ -32,6 +33,8 @@ namespace TPI.Datos
                         {
                             throw new Exception("No se encontró una cuota impaga para este socio.");
                         }
+                        // llamo a comprobante de pago
+                        ComprobantePago.Generar(numCarnet, fechaPago);
                     }
                 }
             }
@@ -87,5 +90,39 @@ namespace TPI.Datos
 
     }
 
+    internal class ComprobantePago
+    {
+        public static void Generar(int numCarnet, DateTime fechaPago)
+        {
+            string ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                $"Comprobante_{numCarnet}_{fechaPago:yyyyMMdd}.txt");
 
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(ruta))
+                {
+                    writer.WriteLine("====================================");
+                    writer.WriteLine("        COMPROBANTE DE PAGO         ");
+                    writer.WriteLine("====================================");
+                    writer.WriteLine($"Fecha:         {fechaPago:dd/MM/yyyy}");
+                    writer.WriteLine($"Carnet Nº:     {numCarnet}");
+                    writer.WriteLine("------------------------------------");
+                    writer.WriteLine("Estado:        PAGADO");
+                    writer.WriteLine("Gracias por su pago.");
+                    writer.WriteLine("====================================");
+                }
+
+                // Abrir el comprobante como ventana emergente
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = ruta,
+                    UseShellExecute = true // Necesario para que se abra con la app predeterminada en .NET Core o .NET 5+
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al generar o abrir el comprobante: " + ex.Message);
+            }
+        }
+    }
 }

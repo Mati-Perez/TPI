@@ -114,9 +114,11 @@
             groupBox1.Controls.Add(panel2);
             groupBox1.Controls.Add(panel1);
             groupBox1.ForeColor = SystemColors.ControlText;
-            groupBox1.Location = new Point(31, 31);
+            groupBox1.Location = new Point(39, 39);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(796, 411);
+            groupBox1.Padding = new Padding(4);
+            groupBox1.Size = new Size(995, 514);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "CANTIDADES";
@@ -128,18 +130,21 @@
             panel3.Controls.Add(groupBox4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(btnRegistrarActividad);
-            panel3.Location = new Point(532, 26);
+            panel3.Location = new Point(665, 32);
+            panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(239, 362);
+            panel3.Size = new Size(298, 452);
             panel3.TabIndex = 2;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(lblCantidadActividad);
             groupBox4.ForeColor = Color.WhiteSmoke;
-            groupBox4.Location = new Point(31, 81);
+            groupBox4.Location = new Point(39, 101);
+            groupBox4.Margin = new Padding(4);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(174, 161);
+            groupBox4.Padding = new Padding(4);
+            groupBox4.Size = new Size(218, 201);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "REGISTRADOS";
@@ -148,9 +153,10 @@
             // 
             lblCantidadActividad.AutoSize = true;
             lblCantidadActividad.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCantidadActividad.Location = new Point(0, 34);
+            lblCantidadActividad.Location = new Point(0, 42);
+            lblCantidadActividad.Margin = new Padding(4, 0, 4, 0);
             lblCantidadActividad.Name = "lblCantidadActividad";
-            lblCantidadActividad.Size = new Size(174, 106);
+            lblCantidadActividad.Size = new Size(210, 128);
             lblCantidadActividad.TabIndex = 2;
             lblCantidadActividad.Text = "010";
             // 
@@ -159,9 +165,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.WhiteSmoke;
-            label3.Location = new Point(58, 19);
+            label3.Location = new Point(72, 24);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(127, 31);
+            label3.Size = new Size(154, 38);
             label3.TabIndex = 3;
             label3.Text = "ACTIVIDAD";
             // 
@@ -170,9 +177,10 @@
             btnRegistrarActividad.BackColor = Color.FromArgb(0, 48, 73);
             btnRegistrarActividad.FlatStyle = FlatStyle.Popup;
             btnRegistrarActividad.ForeColor = Color.WhiteSmoke;
-            btnRegistrarActividad.Location = new Point(40, 293);
+            btnRegistrarActividad.Location = new Point(50, 366);
+            btnRegistrarActividad.Margin = new Padding(4);
             btnRegistrarActividad.Name = "btnRegistrarActividad";
-            btnRegistrarActividad.Size = new Size(159, 52);
+            btnRegistrarActividad.Size = new Size(199, 65);
             btnRegistrarActividad.TabIndex = 2;
             btnRegistrarActividad.Text = "AGREGAR";
             btnRegistrarActividad.UseVisualStyleBackColor = false;
@@ -185,18 +193,21 @@
             panel2.Controls.Add(groupBox3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(btnRegistrarNoSocio);
-            panel2.Location = new Point(271, 26);
+            panel2.Location = new Point(339, 32);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(239, 362);
+            panel2.Size = new Size(298, 452);
             panel2.TabIndex = 1;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(lblCantidadNoSocio);
             groupBox3.ForeColor = Color.WhiteSmoke;
-            groupBox3.Location = new Point(33, 81);
+            groupBox3.Location = new Point(41, 101);
+            groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(174, 161);
+            groupBox3.Padding = new Padding(4);
+            groupBox3.Size = new Size(218, 201);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "REGISTRADOS";
@@ -206,9 +217,10 @@
             lblCantidadNoSocio.AutoSize = true;
             lblCantidadNoSocio.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCantidadNoSocio.ForeColor = Color.WhiteSmoke;
-            lblCantidadNoSocio.Location = new Point(0, 34);
+            lblCantidadNoSocio.Location = new Point(0, 42);
+            lblCantidadNoSocio.Margin = new Padding(4, 0, 4, 0);
             lblCantidadNoSocio.Name = "lblCantidadNoSocio";
-            lblCantidadNoSocio.Size = new Size(174, 106);
+            lblCantidadNoSocio.Size = new Size(210, 128);
             lblCantidadNoSocio.TabIndex = 1;
             lblCantidadNoSocio.Text = "150";
             // 
@@ -217,9 +229,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(57, 19);
+            label2.Location = new Point(71, 24);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(120, 31);
+            label2.Size = new Size(148, 38);
             label2.TabIndex = 2;
             label2.Text = "NO SOCIO";
             // 
@@ -228,9 +241,10 @@
             btnRegistrarNoSocio.BackColor = Color.FromArgb(0, 48, 73);
             btnRegistrarNoSocio.FlatStyle = FlatStyle.Popup;
             btnRegistrarNoSocio.ForeColor = Color.WhiteSmoke;
-            btnRegistrarNoSocio.Location = new Point(36, 293);
+            btnRegistrarNoSocio.Location = new Point(45, 366);
+            btnRegistrarNoSocio.Margin = new Padding(4);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
-            btnRegistrarNoSocio.Size = new Size(159, 52);
+            btnRegistrarNoSocio.Size = new Size(199, 65);
             btnRegistrarNoSocio.TabIndex = 1;
             btnRegistrarNoSocio.Text = "AGREGAR";
             btnRegistrarNoSocio.UseVisualStyleBackColor = false;
@@ -243,9 +257,10 @@
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnRegistrarSocio);
-            panel1.Location = new Point(16, 26);
+            panel1.Location = new Point(20, 32);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(239, 362);
+            panel1.Size = new Size(298, 452);
             panel1.TabIndex = 0;
             // 
             // groupBox2
@@ -253,9 +268,11 @@
             groupBox2.BackColor = Color.FromArgb(120, 0, 0);
             groupBox2.Controls.Add(lblCantidadSocio);
             groupBox2.ForeColor = Color.WhiteSmoke;
-            groupBox2.Location = new Point(33, 81);
+            groupBox2.Location = new Point(41, 101);
+            groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(174, 161);
+            groupBox2.Padding = new Padding(4);
+            groupBox2.Size = new Size(218, 201);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "REGISTRADOS";
@@ -264,9 +281,10 @@
             // 
             lblCantidadSocio.AutoSize = true;
             lblCantidadSocio.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCantidadSocio.Location = new Point(0, 34);
+            lblCantidadSocio.Location = new Point(0, 42);
+            lblCantidadSocio.Margin = new Padding(4, 0, 4, 0);
             lblCantidadSocio.Name = "lblCantidadSocio";
-            lblCantidadSocio.Size = new Size(174, 106);
+            lblCantidadSocio.Size = new Size(210, 128);
             lblCantidadSocio.TabIndex = 0;
             lblCantidadSocio.Text = "001";
             // 
@@ -275,9 +293,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.WhiteSmoke;
-            label1.Location = new Point(77, 19);
+            label1.Location = new Point(96, 24);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(80, 31);
+            label1.Size = new Size(98, 38);
             label1.TabIndex = 1;
             label1.Text = "SOCIO";
             // 
@@ -286,9 +305,10 @@
             btnRegistrarSocio.BackColor = Color.FromArgb(0, 48, 73);
             btnRegistrarSocio.FlatStyle = FlatStyle.Popup;
             btnRegistrarSocio.ForeColor = Color.WhiteSmoke;
-            btnRegistrarSocio.Location = new Point(40, 293);
+            btnRegistrarSocio.Location = new Point(50, 366);
+            btnRegistrarSocio.Margin = new Padding(4);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
-            btnRegistrarSocio.Size = new Size(159, 52);
+            btnRegistrarSocio.Size = new Size(199, 65);
             btnRegistrarSocio.TabIndex = 0;
             btnRegistrarSocio.Text = "AGREGAR";
             btnRegistrarSocio.UseVisualStyleBackColor = false;
@@ -300,9 +320,11 @@
             groupBox5.Controls.Add(tableLayoutPanel2);
             groupBox5.Controls.Add(tableLayoutPanel1);
             groupBox5.ForeColor = Color.Black;
-            groupBox5.Location = new Point(843, 31);
+            groupBox5.Location = new Point(1054, 39);
+            groupBox5.Margin = new Padding(4);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(696, 802);
+            groupBox5.Padding = new Padding(4);
+            groupBox5.Size = new Size(870, 1002);
             groupBox5.TabIndex = 1;
             groupBox5.TabStop = false;
             groupBox5.Text = "BUSQUEDA";
@@ -313,12 +335,13 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(listVistaBusquedaNosocio, 0, 1);
             tableLayoutPanel2.Controls.Add(panel5, 0, 0);
-            tableLayoutPanel2.Location = new Point(26, 410);
+            tableLayoutPanel2.Location = new Point(32, 512);
+            tableLayoutPanel2.Margin = new Padding(4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel2.Size = new Size(632, 365);
+            tableLayoutPanel2.Size = new Size(790, 456);
             tableLayoutPanel2.TabIndex = 11;
             // 
             // listVistaBusquedaNosocio
@@ -327,9 +350,10 @@
             listVistaBusquedaNosocio.Columns.AddRange(new ColumnHeader[] { NOMBREBUSQUEDA, APELLIDOBUSQUEDA, DNIBUSQUEDA, INSCRIPCIONBUSQUEDA });
             listVistaBusquedaNosocio.Dock = DockStyle.Fill;
             listVistaBusquedaNosocio.ForeColor = Color.WhiteSmoke;
-            listVistaBusquedaNosocio.Location = new Point(3, 76);
+            listVistaBusquedaNosocio.Location = new Point(4, 95);
+            listVistaBusquedaNosocio.Margin = new Padding(4);
             listVistaBusquedaNosocio.Name = "listVistaBusquedaNosocio";
-            listVistaBusquedaNosocio.Size = new Size(626, 286);
+            listVistaBusquedaNosocio.Size = new Size(782, 357);
             listVistaBusquedaNosocio.TabIndex = 11;
             listVistaBusquedaNosocio.UseCompatibleStateImageBehavior = false;
             listVistaBusquedaNosocio.View = View.Details;
@@ -362,16 +386,18 @@
             panel5.Controls.Add(rbBusqNoSocioNombre);
             panel5.Controls.Add(rbBusqNoSocioDni);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 3);
+            panel5.Location = new Point(4, 4);
+            panel5.Margin = new Padding(4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(626, 67);
+            panel5.Size = new Size(782, 83);
             panel5.TabIndex = 10;
             // 
             // txtBusquedaNosocio
             // 
-            txtBusquedaNosocio.Location = new Point(13, 17);
+            txtBusquedaNosocio.Location = new Point(16, 21);
+            txtBusquedaNosocio.Margin = new Padding(4);
             txtBusquedaNosocio.Name = "txtBusquedaNosocio";
-            txtBusquedaNosocio.Size = new Size(216, 27);
+            txtBusquedaNosocio.Size = new Size(269, 31);
             txtBusquedaNosocio.TabIndex = 11;
             txtBusquedaNosocio.TextChanged += txtBusquedaNosocio_TextChanged;
             // 
@@ -380,9 +406,10 @@
             rbBusqNoSocioApellido.AutoSize = true;
             rbBusqNoSocioApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqNoSocioApellido.ForeColor = Color.WhiteSmoke;
-            rbBusqNoSocioApellido.Location = new Point(481, 17);
+            rbBusqNoSocioApellido.Location = new Point(601, 21);
+            rbBusqNoSocioApellido.Margin = new Padding(4);
             rbBusqNoSocioApellido.Name = "rbBusqNoSocioApellido";
-            rbBusqNoSocioApellido.Size = new Size(107, 27);
+            rbBusqNoSocioApellido.Size = new Size(132, 34);
             rbBusqNoSocioApellido.TabIndex = 10;
             rbBusqNoSocioApellido.TabStop = true;
             rbBusqNoSocioApellido.Text = "APELLIDO";
@@ -393,9 +420,10 @@
             rbBusqNoSocioNombre.AutoSize = true;
             rbBusqNoSocioNombre.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqNoSocioNombre.ForeColor = Color.WhiteSmoke;
-            rbBusqNoSocioNombre.Location = new Point(362, 17);
+            rbBusqNoSocioNombre.Location = new Point(452, 21);
+            rbBusqNoSocioNombre.Margin = new Padding(4);
             rbBusqNoSocioNombre.Name = "rbBusqNoSocioNombre";
-            rbBusqNoSocioNombre.Size = new Size(101, 27);
+            rbBusqNoSocioNombre.Size = new Size(125, 34);
             rbBusqNoSocioNombre.TabIndex = 9;
             rbBusqNoSocioNombre.TabStop = true;
             rbBusqNoSocioNombre.Text = "NOMBRE";
@@ -406,9 +434,10 @@
             rbBusqNoSocioDni.AutoSize = true;
             rbBusqNoSocioDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqNoSocioDni.ForeColor = Color.WhiteSmoke;
-            rbBusqNoSocioDni.Location = new Point(273, 17);
+            rbBusqNoSocioDni.Location = new Point(341, 21);
+            rbBusqNoSocioDni.Margin = new Padding(4);
             rbBusqNoSocioDni.Name = "rbBusqNoSocioDni";
-            rbBusqNoSocioDni.Size = new Size(61, 27);
+            rbBusqNoSocioDni.Size = new Size(75, 34);
             rbBusqNoSocioDni.TabIndex = 8;
             rbBusqNoSocioDni.TabStop = true;
             rbBusqNoSocioDni.Text = "DNI";
@@ -420,13 +449,14 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(listVistaBusquedaSocio, 0, 1);
             tableLayoutPanel1.Controls.Add(panel4, 0, 0);
-            tableLayoutPanel1.Location = new Point(26, 26);
+            tableLayoutPanel1.Location = new Point(32, 32);
+            tableLayoutPanel1.Margin = new Padding(4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(632, 362);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.Size = new Size(790, 452);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // listVistaBusquedaSocio
@@ -436,9 +466,10 @@
             listVistaBusquedaSocio.Dock = DockStyle.Fill;
             listVistaBusquedaSocio.ForeColor = Color.WhiteSmoke;
             listVistaBusquedaSocio.LabelEdit = true;
-            listVistaBusquedaSocio.Location = new Point(3, 75);
+            listVistaBusquedaSocio.Location = new Point(4, 94);
+            listVistaBusquedaSocio.Margin = new Padding(4);
             listVistaBusquedaSocio.Name = "listVistaBusquedaSocio";
-            listVistaBusquedaSocio.Size = new Size(626, 284);
+            listVistaBusquedaSocio.Size = new Size(782, 354);
             listVistaBusquedaSocio.TabIndex = 9;
             listVistaBusquedaSocio.UseCompatibleStateImageBehavior = false;
             listVistaBusquedaSocio.View = View.Details;
@@ -471,9 +502,10 @@
             panel4.Controls.Add(rbBusqSocioDni);
             panel4.Controls.Add(txtBusquedaSocio);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 3);
+            panel4.Location = new Point(4, 4);
+            panel4.Margin = new Padding(4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(626, 66);
+            panel4.Size = new Size(782, 82);
             panel4.TabIndex = 10;
             // 
             // rbBusqSocioApellido
@@ -481,9 +513,10 @@
             rbBusqSocioApellido.AutoSize = true;
             rbBusqSocioApellido.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqSocioApellido.ForeColor = Color.WhiteSmoke;
-            rbBusqSocioApellido.Location = new Point(481, 17);
+            rbBusqSocioApellido.Location = new Point(601, 21);
+            rbBusqSocioApellido.Margin = new Padding(4);
             rbBusqSocioApellido.Name = "rbBusqSocioApellido";
-            rbBusqSocioApellido.Size = new Size(107, 27);
+            rbBusqSocioApellido.Size = new Size(132, 34);
             rbBusqSocioApellido.TabIndex = 10;
             rbBusqSocioApellido.TabStop = true;
             rbBusqSocioApellido.Text = "APELLIDO";
@@ -494,9 +527,10 @@
             rbBusqSocioNombre.AutoSize = true;
             rbBusqSocioNombre.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqSocioNombre.ForeColor = Color.WhiteSmoke;
-            rbBusqSocioNombre.Location = new Point(362, 17);
+            rbBusqSocioNombre.Location = new Point(452, 21);
+            rbBusqSocioNombre.Margin = new Padding(4);
             rbBusqSocioNombre.Name = "rbBusqSocioNombre";
-            rbBusqSocioNombre.Size = new Size(101, 27);
+            rbBusqSocioNombre.Size = new Size(125, 34);
             rbBusqSocioNombre.TabIndex = 9;
             rbBusqSocioNombre.TabStop = true;
             rbBusqSocioNombre.Text = "NOMBRE";
@@ -507,9 +541,10 @@
             rbBusqSocioDni.AutoSize = true;
             rbBusqSocioDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqSocioDni.ForeColor = Color.WhiteSmoke;
-            rbBusqSocioDni.Location = new Point(273, 17);
+            rbBusqSocioDni.Location = new Point(341, 21);
+            rbBusqSocioDni.Margin = new Padding(4);
             rbBusqSocioDni.Name = "rbBusqSocioDni";
-            rbBusqSocioDni.Size = new Size(61, 27);
+            rbBusqSocioDni.Size = new Size(75, 34);
             rbBusqSocioDni.TabIndex = 8;
             rbBusqSocioDni.TabStop = true;
             rbBusqSocioDni.Text = "DNI";
@@ -517,9 +552,10 @@
             // 
             // txtBusquedaSocio
             // 
-            txtBusquedaSocio.Location = new Point(13, 17);
+            txtBusquedaSocio.Location = new Point(16, 21);
+            txtBusquedaSocio.Margin = new Padding(4);
             txtBusquedaSocio.Name = "txtBusquedaSocio";
-            txtBusquedaSocio.Size = new Size(216, 27);
+            txtBusquedaSocio.Size = new Size(269, 31);
             txtBusquedaSocio.TabIndex = 7;
             txtBusquedaSocio.TextChanged += txtBusquedaSocio_TextChanged;
             // 
@@ -528,9 +564,11 @@
             groupBox9.Controls.Add(button1);
             groupBox9.Controls.Add(btnPagos);
             groupBox9.ForeColor = Color.Black;
-            groupBox9.Location = new Point(1574, 351);
+            groupBox9.Location = new Point(1968, 439);
+            groupBox9.Margin = new Padding(4);
             groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(228, 269);
+            groupBox9.Padding = new Padding(4);
+            groupBox9.Size = new Size(285, 336);
             groupBox9.TabIndex = 3;
             groupBox9.TabStop = false;
             groupBox9.Text = "OPCIONES";
@@ -540,9 +578,10 @@
             button1.BackColor = Color.FromArgb(0, 48, 73);
             button1.FlatStyle = FlatStyle.Popup;
             button1.ForeColor = Color.WhiteSmoke;
-            button1.Location = new Point(29, 151);
+            button1.Location = new Point(36, 189);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
-            button1.Size = new Size(179, 55);
+            button1.Size = new Size(224, 69);
             button1.TabIndex = 1;
             button1.Text = "REGISTRO";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -554,9 +593,10 @@
             btnPagos.BackColor = Color.FromArgb(0, 48, 73);
             btnPagos.FlatStyle = FlatStyle.Popup;
             btnPagos.ForeColor = Color.WhiteSmoke;
-            btnPagos.Location = new Point(29, 78);
+            btnPagos.Location = new Point(36, 98);
+            btnPagos.Margin = new Padding(4);
             btnPagos.Name = "btnPagos";
-            btnPagos.Size = new Size(179, 55);
+            btnPagos.Size = new Size(224, 69);
             btnPagos.TabIndex = 0;
             btnPagos.Text = "PAGOS";
             btnPagos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -569,12 +609,13 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Controls.Add(listVistaVencimientos, 0, 1);
             tableLayoutPanel3.Controls.Add(panel6, 0, 0);
-            tableLayoutPanel3.Location = new Point(16, 26);
+            tableLayoutPanel3.Location = new Point(20, 32);
+            tableLayoutPanel3.Margin = new Padding(4);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel3.Size = new Size(755, 332);
+            tableLayoutPanel3.Size = new Size(944, 415);
             tableLayoutPanel3.TabIndex = 4;
             // 
             // listVistaVencimientos
@@ -583,9 +624,10 @@
             listVistaVencimientos.Columns.AddRange(new ColumnHeader[] { CARNET, NOMBREVENCIMIENTO, APELLIDOVENCIMIENTO, DNIVENCIMIENTO, MONTO, VENCIMIENTO });
             listVistaVencimientos.Dock = DockStyle.Fill;
             listVistaVencimientos.ForeColor = Color.WhiteSmoke;
-            listVistaVencimientos.Location = new Point(3, 69);
+            listVistaVencimientos.Location = new Point(4, 87);
+            listVistaVencimientos.Margin = new Padding(4);
             listVistaVencimientos.Name = "listVistaVencimientos";
-            listVistaVencimientos.Size = new Size(749, 260);
+            listVistaVencimientos.Size = new Size(936, 324);
             listVistaVencimientos.TabIndex = 4;
             listVistaVencimientos.UseCompatibleStateImageBehavior = false;
             listVistaVencimientos.View = View.Details;
@@ -628,9 +670,10 @@
             panel6.Controls.Add(rbBusqVencimientoCarnet);
             panel6.Controls.Add(txtBusquedaVencimiento);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(3, 3);
+            panel6.Location = new Point(4, 4);
+            panel6.Margin = new Padding(4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(749, 60);
+            panel6.Size = new Size(936, 75);
             panel6.TabIndex = 5;
             // 
             // rbBusqVencimientoNombre
@@ -638,9 +681,10 @@
             rbBusqVencimientoNombre.AutoSize = true;
             rbBusqVencimientoNombre.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqVencimientoNombre.ForeColor = Color.WhiteSmoke;
-            rbBusqVencimientoNombre.Location = new Point(545, 18);
+            rbBusqVencimientoNombre.Location = new Point(681, 22);
+            rbBusqVencimientoNombre.Margin = new Padding(4);
             rbBusqVencimientoNombre.Name = "rbBusqVencimientoNombre";
-            rbBusqVencimientoNombre.Size = new Size(101, 27);
+            rbBusqVencimientoNombre.Size = new Size(125, 34);
             rbBusqVencimientoNombre.TabIndex = 12;
             rbBusqVencimientoNombre.TabStop = true;
             rbBusqVencimientoNombre.Text = "NOMBRE";
@@ -651,9 +695,10 @@
             rbBusqVencimientoDni.AutoSize = true;
             rbBusqVencimientoDni.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqVencimientoDni.ForeColor = Color.WhiteSmoke;
-            rbBusqVencimientoDni.Location = new Point(416, 18);
+            rbBusqVencimientoDni.Location = new Point(520, 22);
+            rbBusqVencimientoDni.Margin = new Padding(4);
             rbBusqVencimientoDni.Name = "rbBusqVencimientoDni";
-            rbBusqVencimientoDni.Size = new Size(61, 27);
+            rbBusqVencimientoDni.Size = new Size(75, 34);
             rbBusqVencimientoDni.TabIndex = 11;
             rbBusqVencimientoDni.TabStop = true;
             rbBusqVencimientoDni.Text = "DNI";
@@ -664,9 +709,10 @@
             rbBusqVencimientoCarnet.AutoSize = true;
             rbBusqVencimientoCarnet.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbBusqVencimientoCarnet.ForeColor = Color.WhiteSmoke;
-            rbBusqVencimientoCarnet.Location = new Point(279, 18);
+            rbBusqVencimientoCarnet.Location = new Point(349, 22);
+            rbBusqVencimientoCarnet.Margin = new Padding(4);
             rbBusqVencimientoCarnet.Name = "rbBusqVencimientoCarnet";
-            rbBusqVencimientoCarnet.Size = new Size(94, 27);
+            rbBusqVencimientoCarnet.Size = new Size(116, 34);
             rbBusqVencimientoCarnet.TabIndex = 10;
             rbBusqVencimientoCarnet.TabStop = true;
             rbBusqVencimientoCarnet.Text = "CARNET";
@@ -674,38 +720,45 @@
             // 
             // txtBusquedaVencimiento
             // 
-            txtBusquedaVencimiento.Location = new Point(20, 20);
+            txtBusquedaVencimiento.Location = new Point(25, 25);
+            txtBusquedaVencimiento.Margin = new Padding(4);
             txtBusquedaVencimiento.Name = "txtBusquedaVencimiento";
-            txtBusquedaVencimiento.Size = new Size(216, 27);
+            txtBusquedaVencimiento.Size = new Size(269, 31);
             txtBusquedaVencimiento.TabIndex = 0;
             txtBusquedaVencimiento.TextChanged += txtBusquedaVencimiento_TextChanged;
             // 
             // groupBox6
             // 
             groupBox6.Controls.Add(tableLayoutPanel3);
-            groupBox6.Location = new Point(31, 448);
+            groupBox6.Location = new Point(39, 560);
+            groupBox6.Margin = new Padding(4);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(796, 385);
+            groupBox6.Padding = new Padding(4);
+            groupBox6.Size = new Size(995, 481);
             groupBox6.TabIndex = 4;
             groupBox6.TabStop = false;
             groupBox6.Text = "VENCIMIENTOS";
+            groupBox6.Enter += groupBox6_Enter;
             // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(102, 155, 188);
             panel7.Controls.Add(groupBox7);
             panel7.Controls.Add(label4);
-            panel7.Location = new Point(1574, 43);
+            panel7.Location = new Point(1968, 54);
+            panel7.Margin = new Padding(4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(228, 285);
+            panel7.Size = new Size(285, 356);
             panel7.TabIndex = 5;
             // 
             // groupBox7
             // 
             groupBox7.Controls.Add(lblCantidadClientes);
-            groupBox7.Location = new Point(41, 58);
+            groupBox7.Location = new Point(51, 72);
+            groupBox7.Margin = new Padding(4);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(158, 199);
+            groupBox7.Padding = new Padding(4);
+            groupBox7.Size = new Size(198, 249);
             groupBox7.TabIndex = 1;
             groupBox7.TabStop = false;
             groupBox7.Text = "TOTALES";
@@ -714,9 +767,10 @@
             // 
             lblCantidadClientes.AutoSize = true;
             lblCantidadClientes.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCantidadClientes.Location = new Point(-6, 40);
+            lblCantidadClientes.Location = new Point(-8, 50);
+            lblCantidadClientes.Margin = new Padding(4, 0, 4, 0);
             lblCantidadClientes.Name = "lblCantidadClientes";
-            lblCantidadClientes.Size = new Size(174, 106);
+            lblCantidadClientes.Size = new Size(210, 128);
             lblCantidadClientes.TabIndex = 0;
             lblCantidadClientes.Text = "151";
             // 
@@ -724,25 +778,26 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(62, 14);
+            label4.Location = new Point(78, 18);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(110, 31);
+            label4.Size = new Size(133, 38);
             label4.TabIndex = 0;
             label4.Text = "CLIENTES";
             // 
             // DashBoard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1814, 845);
+            ClientSize = new Size(1924, 1056);
             Controls.Add(panel7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox9);
             Controls.Add(groupBox5);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            Margin = new Padding(4);
             Name = "DashBoard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SECTOR 7G";

@@ -50,7 +50,7 @@ namespace TPI.Forms
 
             listVistaBusquedaSocio.Items.Clear();
             listVistaBusquedaNosocio.Items.Clear();
-            
+
             Show_Socios(ListadoSocios);
             Show_NoSocios(ListadoNoSocios);
             CantidadClientes(ListadoSocios, ListadoNoSocios);
@@ -140,7 +140,7 @@ namespace TPI.Forms
 
             var noSocios = NoSocioService.ListaNoSocios()
                 .Where(ns => (rbBusqNoSocioDni.Checked && ns.Dni.ToString().Contains(searchDni)) ||
-                             (rbBusqNoSocioNombre.Checked && ns.Nombre.Contains(searchDni)) || 
+                             (rbBusqNoSocioNombre.Checked && ns.Nombre.Contains(searchDni)) ||
                              (rbBusqNoSocioApellido.Checked && ns.Apellido.Equals(searchDni))).ToList();
 
 
@@ -173,6 +173,9 @@ namespace TPI.Forms
             registroForm.ShowDialog();
         }
 
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }
