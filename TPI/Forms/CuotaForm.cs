@@ -9,38 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TPI.Datos;
 using TPI.Entidades;
+using TPI.Servicios;
 
 namespace TPI.Forms
 {
     public partial class CuotaForm : Form
     {
+        public frmFactura doc = new frmFactura();
+
         public CuotaForm()
         {
             InitializeComponent();
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-
-        //}
         private void button1_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (string.IsNullOrWhiteSpace(txtNumCarnet.Text))
@@ -51,11 +36,40 @@ namespace TPI.Forms
 
                 int numCarnet = int.Parse(txtNumCarnet.Text);
                 DateTime fechaPago = dtpFechaPago.Value;
+                string formaDePago;
+                if(rbEfectivo.Checked == true)
+                {
+                    formaDePago = "Efectivo";
+                }else if(rbTarjeta.Checked == true)
+                {
+                    formaDePago = "Tarjeta";
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una forma de pago","AVISO DEL SISTEMA",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                CuotaBD cuotaBD = new CuotaBD();
-                cuotaBD.MarcarCuotaComoPagada(numCarnet, fechaPago);
+                CuotaService cuota = new CuotaService();
+                cuota.PagarCuota(numCarnet, formaDePago);
 
                 MessageBox.Show("Cuota actualizada como pagada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var soc = SocioService.ObtenerSocioPorCarnet(numCarnet);
+                if(soc is null)
+                {
+                    MessageBox.Show("No hay socio", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                }
+                doc.nombre_f = soc.Nombre;
+                doc.apellido_f = soc.Apellido;
+                doc.forma_f = formaDePago;
+                doc.monto_f = 25000;
+                doc.carnet_f = numCarnet;
+                doc.Show();
+                this.Hide();
+
             }
             catch (FormatException)
             {
@@ -87,16 +101,5 @@ namespace TPI.Forms
             }
         }
 
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

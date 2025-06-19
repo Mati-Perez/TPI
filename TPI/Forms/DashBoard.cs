@@ -17,11 +17,13 @@ namespace TPI.Forms
         public DashBoard()
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.Size = new Size(700, 400);
         }
 
         private void DashBoard_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(1500, 2500);
             ActualizarVista();
             rbBusqNoSocioDni.Checked = true;
             rbBusqSocioDni.Checked = true;
@@ -40,8 +42,6 @@ namespace TPI.Forms
 
         public void ActualizarVista()
         {
-
-
             SocioService.cargarSocios();
             List<Socio> ListadoSocios = SocioService.ListaSocios();
 
@@ -60,7 +60,8 @@ namespace TPI.Forms
         {
             foreach (var socio in socios)
             {
-                ListViewItem item = new ListViewItem(socio.Nombre);
+                ListViewItem item = new ListViewItem(socio.NumCarnet.ToString());
+                item.SubItems.Add(socio.Nombre);
                 item.SubItems.Add(socio.Apellido);
                 item.SubItems.Add(socio.Dni.ToString());
                 item.SubItems.Add(socio.FechaInscripcion.ToShortDateString());
@@ -126,8 +127,8 @@ namespace TPI.Forms
 
             var socios = SocioService.ListaSocios()
                 .Where(s => (rbBusqSocioDni.Checked && s.Dni.ToString().Contains(searchDni)) ||
-                            (rbBusqSocioNombre.Checked && s.Nombre.Contains(searchDni)) ||
-                            (rbBusqSocioApellido.Checked && s.Apellido.Equals(searchDni))).ToList();
+                            (rbBusqSocioNombre.Checked && s.Nombre.ToUpper().Contains(searchDni)) ||
+                            (rbBusqSocioApellido.Checked && s.Apellido.ToUpper().Contains(searchDni))).ToList();
 
             Show_Socios(socios);
         }
@@ -173,9 +174,10 @@ namespace TPI.Forms
             registroForm.ShowDialog();
         }
 
-        private void groupBox6_Enter(object sender, EventArgs e)
+        private void btnCuotas_Click(object sender, EventArgs e)
         {
-
+            CuotaForm cuotaForm = new CuotaForm();
+            cuotaForm.ShowDialog();
         }
     }
 }

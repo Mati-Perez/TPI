@@ -100,24 +100,45 @@ namespace TPI.Forms
         {
             Show_date();
             Show_Time();
-            string direccion = txtCalle.Text.Trim() + ", " + txtAltura.Text + ", " + txtLocalidad.Text + ", " + txtCp.Text;
+            lblError.Text = "";
 
+            if (!verificarRegistro(txtNombre.Text.Trim(), txtApellido.Text.Trim(), cbTipoDni.Text, txtDni.Text, txtCalle.Text.Trim(), txtAltura.Text, txtLocalidad.Text, txtCp.Text))
+            {
+                return;
+            }
+
+            string direccion = txtCalle.Text.Trim() + ", " + txtAltura.Text + ", " + txtLocalidad.Text + ", " + txtCp.Text;
+            DateTime fechaActual = DateTime.Now;
 
             switch (cbTipoRegistro.Text)
             {
                 case "SOCIO":
                     var newSocio = new Socio(
-                        null, // Assuming NumCarnet is optional and can be null
+                        null, 
                         txtNombre.Text.Trim(),
                         txtApellido.Text.Trim(),
                         cbTipoDni.Text,
                         Convert.ToInt32(txtDni.Text),
                         direccion,
-                        DateTime.Now, // Fecha de inscripción actual
+                        fechaActual, // Fecha de inscripción actual
                         true // Asumimos que el carnet está activo al registrarlo
                     );
-
+                    
                     SocioService.RegistrarSocio(newSocio); // Registrar el nuevo socio
+
+                    Socio socioEncontrado = SocioService.ObtenerSocioPorDni(newSocio.Dni);
+                    
+                    var newCuota = new Cuota(
+                        null,
+                        socioEncontrado.NumCarnet.Value,
+                        25000,
+                        null,
+                        null,
+                        fechaActual.AddMonths(1),
+                        false
+                    );
+                    CuotaService.RegistrarCuota(newCuota); // Registra una nueva cuota
+
                     CargarSociosEnListView();
                     tabControl1.SelectedTab = SOCIO;
                     limpiarCampos(); // Limpiar los campos después de registrar
@@ -152,12 +173,54 @@ namespace TPI.Forms
 
         }
 
+        private bool verificarRegistro(string nombre, string apellido, string tipoDni, string dni, string calle, string altura, string localidad, string cp)
+        {
+            if (nombre == "")
+            {
+                lblError.Text = "*Nombre requerido";
+                return false;
+            }
+            if (apellido == "")
+            {
+                lblError.Text = "*Apellido requerido";
+                return false;
+            }
+            if (dni == null)
+            {
+                lblError.Text = "*Dni requerido";
+                return false;
+            }
+            if (calle == "" || altura == "" || localidad == "" || cp == "")
+            {
+                lblError.Text = "*Direccion incompleta";
+                return false;
+            }
+            if (tipoDni == "")
+            {
+                lblError.Text = "*Debe seleccionar un tipo de documento";
+                return false;
+            }
+
+
+            var socios = SocioService.ListaSocios()
+                .Where(s => (s.Dni.ToString().Contains(dni)));
+            var noSocios = NoSocioService.ListaNoSocios()
+                .Where(s => (s.Dni.ToString().Contains(dni)));
+
+            if (socios.Count() > 0 || noSocios.Count() > 0)
+            {
+                MessageBox.Show("Ya existe un cliente con el dni ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblError.Text = "*El cliente ya se encuentra registrado";
+                return false;
+            }
+
+            return true;
+        }
+
         private void label9_Click(object sender, EventArgs e)
         {
 
         }
-
-
 
         private void CargarSociosEnListView()
         {
@@ -369,18 +432,20 @@ namespace TPI.Forms
                     MessageBox.Show("Por favor, seleccione un tipo de registro válido.");
                     break;
             }
-
-
-
         }
 
         private void RegistroForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (dashBoard != null)
             {
-               dashBoard.ActualizarVista(); // Actualiza la vista del DashBoard al cerrar el formulario de registro
+                dashBoard.ActualizarVista(); // Actualiza la vista del DashBoard al cerrar el formulario de registro
             }
-               
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

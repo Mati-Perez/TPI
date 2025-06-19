@@ -9,16 +9,16 @@ namespace TPI.Entidades
 {
     public class Cuota
     {
-        public int IdCuota { get; set; }
+        public int? IdCuota { get; set; }
         public int NumCarnet { get; set; }
-        public decimal Monto { get; set; }
-        public string Tipo { get; set; }
+        public float Monto { get; set; }
+        public string? Tipo { get; set; }
         public DateTime? FechaPago { get; set; }
         public DateTime FechaVencimiento { get; set; }
-        public string Estado { get; set; }
+        public bool Pagado { get; set; }
 
-        public Cuota(int idCuota, int numCarnet, decimal monto, string tipo,
-            DateTime? fechaPago, DateTime fechaVencimiento, string estado)
+        public Cuota(int? idCuota, int numCarnet, float monto, string tipo,
+            DateTime? fechaPago, DateTime fechaVencimiento, bool pagado)
         {
             IdCuota = idCuota;
             NumCarnet = numCarnet;
@@ -26,7 +26,7 @@ namespace TPI.Entidades
             Tipo = tipo;
             FechaPago = fechaPago;
             FechaVencimiento = fechaVencimiento;
-            Estado = estado;
+            Pagado = pagado;
         }
 
         public void PagarCuota()

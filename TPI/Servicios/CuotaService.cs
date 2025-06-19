@@ -13,9 +13,18 @@ namespace TPI.Servicios
     {
         private readonly List<Cuota> cuotas = new();
 
-        public void RegistrarCuota(Cuota cuota)
+        public static void RegistrarCuota(Cuota cuota)
         {
-            cuotas.Add(cuota);
+            CuotaBD nuevaCuota = new CuotaBD();
+            try
+            {
+                nuevaCuota.AddCuota(cuota.NumCarnet, cuota.Monto, cuota.Tipo, null, cuota.FechaVencimiento, cuota.Pagado);
+                MessageBox.Show("Se ha generado una nueva cuota.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         public List<Cuota> ObtenerCuotas()
@@ -23,9 +32,26 @@ namespace TPI.Servicios
             return cuotas;
         }
 
-        public Cuota ObtenerCuota(int idCuota)
+        public Cuota ObtenerCuota(int numCarnet)
         {
-            return cuotas.FirstOrDefault(c => c.IdCuota == idCuota);
+            CuotaBD repo = new CuotaBD();
+            DataTable dt = repo.ObtenerCuotaPorNumCarnet(numCarnet);
+
+            if (dt.Rows.Count == 0)
+                return null;
+
+            DataRow row = dt.Rows[0];
+
+            return new Cuota(
+                Convert.ToInt32(row["IdCuota"]),
+                Convert.ToInt32(row["NumCarnet"]),
+                Convert.ToSingle(row["Monto"]),
+                row["Tipo"]?.ToString(),
+                row["FechaPago"] == DBNull.Value ? null : Convert.ToDateTime(row["FechaPago"]),
+                Convert.ToDateTime(row["FechaVencimiento"]),
+                Convert.ToBoolean(row["Estado"])
+            );
+
         }
 
         public static List<dynamic> ObtenerVencimientos()
@@ -52,18 +78,19 @@ namespace TPI.Servicios
 
             return vencimientos;
         }
-        public bool PagarCuota(int idCuota)
+        public bool PagarCuota(int numCarnet, string modoDePago)
         {
-            var cuota = ObtenerCuota(idCuota);
+            var cuota = ObtenerCuota(numCarnet);
 
             if (cuota == null)
                 throw new InvalidOperationException("No se encontró la cuota.");
 
-            if (cuota.Estado == "Pagado")
+            if (cuota.Pagado == true)
                 throw new InvalidOperationException("La cuota ya fue pagada.");
 
-            cuota.FechaPago = DateTime.Now;
-            cuota.Estado = "Pagado";
+            CuotaBD cuotaPorPagar = new CuotaBD();
+            cuotaPorPagar.MarcarCuotaComoPagada(cuota.NumCarnet, DateTime.Now, modoDePago);
+            
             return true;
         }
     }

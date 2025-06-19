@@ -6,9 +6,11 @@ namespace TPI
 {
     public partial class Form1 : Form
     {
+        Datos.Usuarios dato = new Datos.Usuarios();
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace TPI
 
             lblPassword.Text = "";
             DataTable tablaLogin = new DataTable();
-            Datos.Usuarios dato = new Datos.Usuarios();
+            
             tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
             if (tablaLogin.Rows.Count > 0)
             {

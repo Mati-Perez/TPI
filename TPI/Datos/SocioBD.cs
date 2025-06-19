@@ -45,6 +45,7 @@ namespace TPI.Datos
 
         public void AddSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp, DateTime fechaInscripcion)
         {
+
             string query = @"INSERT INTO socio (Nombre, Apellido,TipoDoc, Documento, Calle, Altura, Localidad, CP, FechaInscripcion)
                          VALUES (@Nombre, @Apellido,@tipoDoc, @Documento, @Calle, @Altura, @Localidad, @CP, @FechaInscripcion);";
 
@@ -112,24 +113,53 @@ namespace TPI.Datos
 
         public int DeleteSocio(int dni)
         {
-            string query = @"DELETE FROM socio WHERE Documento = @DNI;";
+            string deleteCuotasQuery = @"
+        DELETE FROM cuota 
+        WHERE NumCarnet = (
+            SELECT NumCarnet FROM socio WHERE Documento = @DNI
+        );";
+
+            string deleteSocioQuery = @"DELETE FROM socio WHERE Documento = @DNI;";
+
             try
             {
                 using (var sqlcon = Conexion.getInstancia().CrearConexion())
                 {
                     sqlcon.Open();
-                    using (var command = new MySqlCommand(query, sqlcon))
+                    using (var transaction = sqlcon.BeginTransaction())
                     {
-                        command.Parameters.AddWithValue("@DNI", dni);
-                        int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected;
+                        try
+                        {
+                            // Eliminar cuotas asociadas
+                            using (var cmdCuotas = new MySqlCommand(deleteCuotasQuery, sqlcon, transaction))
+                            {
+                                cmdCuotas.Parameters.AddWithValue("@DNI", dni);
+                                cmdCuotas.ExecuteNonQuery();
+                            }
+
+                            // Eliminar socio
+                            using (var cmdSocio = new MySqlCommand(deleteSocioQuery, sqlcon, transaction))
+                            {
+                                cmdSocio.Parameters.AddWithValue("@DNI", dni);
+                                int rowsAffected = cmdSocio.ExecuteNonQuery();
+
+                                transaction.Commit();
+                                return rowsAffected;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar el socio: " + ex.Message);
+                throw new Exception("Error al eliminar el socio y sus cuotas: " + ex.Message);
             }
+
         }
 
         public int UpdateSocio(string nombre, string apellido, string tipoDni, int dni, string calle, int altura, string localidad, int cp) 
@@ -161,6 +191,34 @@ namespace TPI.Datos
             catch (Exception ex)
             {
                 throw new Exception("Error al actualizar el socio: " + ex.Message);
+            }
+        }
+
+        public DataTable GetSocioPorCarnet(int numCarnet)
+        {
+            DataTable socio = new DataTable();
+            string query = @"SELECT * FROM socio WHERE NumCarnet = @NumCarnet;";
+
+            try
+            {
+                using (var sqlcon = Conexion.getInstancia().CrearConexion())
+                {
+                    sqlcon.Open();
+                    using (var command = new MySqlCommand(query, sqlcon))
+                    {
+                        command.Parameters.AddWithValue("@NumCarnet", numCarnet);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            socio.Load(reader);
+                        }
+                    }
+                }
+
+                return socio;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el socio por número de carnet: " + ex.Message);
             }
         }
 

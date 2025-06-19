@@ -8,10 +8,47 @@ namespace TPI.Datos
 {
     internal class CuotaBD
     {
-        public void MarcarCuotaComoPagada(int numCarnet, DateTime fechaPago)
+        public void AddCuota(int numCarnet, float monto, string tipo, DateTime? fechaPago, DateTime vencimiento, bool estado)
+        {
+
+            string query = @"INSERT INTO cuota (NumCarnet, Monto,Tipo, FechaPago, FechaVencimiento, Estado)
+                         VALUES (@numCarnet, @monto, @tipo, @fechaPago, @vencimiento, @estado);";
+
+            try
+            {
+                using (var sqlcon = Conexion.getInstancia().CrearConexion())
+                {
+                    sqlcon.Open();
+
+                    using (var command = new MySqlCommand(query, sqlcon))
+                    {
+                        command.Parameters.AddWithValue("@numCarnet", numCarnet);
+                        command.Parameters.AddWithValue("@monto", monto);
+                        command.Parameters.AddWithValue("@tipo", tipo);
+                        command.Parameters.AddWithValue("@fechaPago", fechaPago);
+                        command.Parameters.AddWithValue("@vencimiento", vencimiento);
+                        command.Parameters.AddWithValue("@estado", estado);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            Console.WriteLine("No se pudo agregar la cuota.");
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar socio: " + ex.Message);
+            }
+        }
+
+
+        public void MarcarCuotaComoPagada(int numCarnet, DateTime fechaPago, string modoDePago)
         {
             string query = @"UPDATE cuota 
-                             SET Estado = 1, FechaPago = @FechaPago 
+                             SET Estado = 1, FechaPago = @FechaPago, tipo = @ModoDePago
                              WHERE NumCarnet = @NumCarnet AND Estado = 0
                              ORDER BY FechaVencimiento ASC
                              LIMIT 1;";
@@ -26,6 +63,7 @@ namespace TPI.Datos
                     {
                         command.Parameters.AddWithValue("@NumCarnet", numCarnet);
                         command.Parameters.AddWithValue("@FechaPago", fechaPago);
+                        command.Parameters.AddWithValue("@ModoDePago", modoDePago);
 
                         int rowsAffected = command.ExecuteNonQuery();
 
@@ -34,7 +72,7 @@ namespace TPI.Datos
                             throw new Exception("No se encontró una cuota impaga para este socio.");
                         }
                         // llamo a comprobante de pago
-                        ComprobantePago.Generar(numCarnet, fechaPago);
+                       // ComprobantePago.Generar(numCarnet, fechaPago);
                     }
                 }
             }
@@ -88,40 +126,60 @@ namespace TPI.Datos
             return dt;
         }
 
-    }
-
-    internal class ComprobantePago
-    {
-        public static void Generar(int numCarnet, DateTime fechaPago)
+        public DataTable ObtenerCuotaPorNumCarnet(int numCarnet)
         {
-            string ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                $"Comprobante_{numCarnet}_{fechaPago:yyyyMMdd}.txt");
+            DataTable dt = new DataTable();
+            string query = @"SELECT * FROM cuota WHERE NumCarnet = @NumCarnet AND Estado = 0 ORDER BY FechaVencimiento ASC LIMIT 1;";
 
-            try
+            using (var con = Conexion.getInstancia().CrearConexion())
             {
-                using (StreamWriter writer = new StreamWriter(ruta))
+                con.Open();
+                using (var cmd = new MySqlCommand(query, con))
                 {
-                    writer.WriteLine("====================================");
-                    writer.WriteLine("        COMPROBANTE DE PAGO         ");
-                    writer.WriteLine("====================================");
-                    writer.WriteLine($"Fecha:         {fechaPago:dd/MM/yyyy}");
-                    writer.WriteLine($"Carnet Nº:     {numCarnet}");
-                    writer.WriteLine("------------------------------------");
-                    writer.WriteLine("Estado:        PAGADO");
-                    writer.WriteLine("Gracias por su pago.");
-                    writer.WriteLine("====================================");
+                    cmd.Parameters.AddWithValue("@NumCarnet", numCarnet);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
                 }
-
-                // Abrir el comprobante como ventana emergente
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = ruta,
-                    UseShellExecute = true // Necesario para que se abra con la app predeterminada en .NET Core o .NET 5+
-                });
             }
-            catch (Exception ex)
+
+            return dt;
+        }
+
+        internal class ComprobantePago
+        {
+            public static void Generar(int numCarnet, DateTime fechaPago)
             {
-                Console.WriteLine("Error al generar o abrir el comprobante: " + ex.Message);
+                string ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                    $"Comprobante_{numCarnet}_{fechaPago:yyyyMMdd}.txt");
+
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(ruta))
+                    {
+                        writer.WriteLine("====================================");
+                        writer.WriteLine("        COMPROBANTE DE PAGO         ");
+                        writer.WriteLine("====================================");
+                        writer.WriteLine($"Fecha:         {fechaPago:dd/MM/yyyy}");
+                        writer.WriteLine($"Carnet Nº:     {numCarnet}");
+                        writer.WriteLine("------------------------------------");
+                        writer.WriteLine("Estado:        PAGADO");
+                        writer.WriteLine("Gracias por su pago.");
+                        writer.WriteLine("====================================");
+                    }
+
+                    // Abrir el comprobante como ventana emergente
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = ruta,
+                        UseShellExecute = true // Necesario para que se abra con la app predeterminada en .NET Core o .NET 5+
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al generar o abrir el comprobante: " + ex.Message);
+                }
             }
         }
     }

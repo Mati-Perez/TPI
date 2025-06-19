@@ -19,6 +19,58 @@ namespace TPI.Servicios
             return _socios;
         }
 
+        public static Socio ObtenerSocioPorCarnet(int numCarnet)
+        {
+            SocioBD repo = new SocioBD();
+            DataTable dt = repo.GetSocioPorCarnet(numCarnet);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontró un socio con ese número de carnet.");
+                return null;
+            }
+
+            DataRow row = dt.Rows[0];
+
+            return new Socio(
+                Convert.ToInt32(row["NumCarnet"]),
+                row["Nombre"]?.ToString() ?? "",
+                row["Apellido"]?.ToString() ?? "",
+                row["TipoDoc"]?.ToString() ?? "",
+                Convert.ToInt32(row["Documento"]),
+                $"{row["Calle"]}, {row["Altura"]}, {row["Localidad"]}, {row["CP"]}",
+                Convert.ToDateTime(row["FechaInscripcion"]),
+                Convert.ToBoolean(row["Carnet"])
+            );
+        }
+
+        public static Socio ObtenerSocioPorDni(int dni)
+        {
+            SocioBD repo = new SocioBD();
+            DataTable dt = repo.GetSocioByDni(dni);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontró un socio con ese DNI.");
+                return null;
+            }
+
+            DataRow row = dt.Rows[0];
+
+            Socio socio = new Socio(
+                Convert.ToInt32(row["NumCarnet"]),
+                row["Nombre"]?.ToString() ?? "",
+                row["Apellido"]?.ToString() ?? "",
+                row["TipoDoc"]?.ToString() ?? "",
+                Convert.ToInt32(row["Documento"]),
+                $"{row["Calle"]}, {row["Altura"]}, {row["Localidad"]}, {row["CP"]}",
+                Convert.ToDateTime(row["FechaInscripcion"]),
+                Convert.ToBoolean(row["Carnet"])
+            );
+
+            return socio;
+        }
+
         public static void cargarSocios() 
         {
             _socios = SocioService.ObtenerSocios();
